@@ -35,10 +35,12 @@ export const site = {
     github: 'https://github.com/rksaklani/elcro',
     websiteGithub: 'https://github.com/rksaklani/elcro_website',
     download: '/download-beta',
-    version: '0.1.0',
+    version: '0.1.3',
     releases: 'https://github.com/rksaklani/elcro/releases',
-    latestRelease: 'https://github.com/rksaklani/elcro/releases/latest',
+    latestRelease: 'https://github.com/rksaklani/elcro/releases/tag/v0.1.3',
 }
+
+const RELEASE_TAG = 'v0.1.3'
 
 export type DownloadTarget = {
     os: string
@@ -52,7 +54,7 @@ export type DownloadTarget = {
     altHref?: string
 }
 
-const asset = (name: string) => `${site.releases}/latest/download/${name}`
+const asset = (name: string) => `${site.releases}/download/${RELEASE_TAG}/${name}`
 
 export const downloadTargets: DownloadTarget[] = [
     {
@@ -61,7 +63,7 @@ export const downloadTargets: DownloadTarget[] = [
         arch: 'x64',
         format: 'tar.gz archive',
         href: asset('Elcro-Linux-x64.tar.gz'),
-        install: 'Extract the archive and run ./elcro. If Chromium reports a sandbox error, run: sudo chown root:root chrome-sandbox && sudo chmod 4755 chrome-sandbox',
+        install: 'Extract the archive, then run ./VSCode-linux-x64/elcro. If Chromium reports a sandbox error, run: sudo chown root:root chrome-sandbox && sudo chmod 4755 chrome-sandbox in that folder.',
         available: true,
     },
     {
