@@ -35,7 +35,50 @@ export const site = {
     github: 'https://github.com/rksaklani/elcro',
     websiteGithub: 'https://github.com/rksaklani/elcro_website',
     download: '/download-beta',
+    version: '0.1.0',
+    releases: 'https://github.com/rksaklani/elcro/releases',
+    latestRelease: 'https://github.com/rksaklani/elcro/releases/latest',
 }
+
+export type DownloadTarget = {
+    os: string
+    match: string
+    arch: string
+    format: string
+    href: string
+    install: string
+    available: boolean
+}
+
+export const downloadTargets: DownloadTarget[] = [
+    {
+        os: 'Linux',
+        match: 'Linux',
+        arch: 'x64',
+        format: 'tar.gz archive',
+        href: site.latestRelease,
+        install: 'Extract the archive and run ./elcro/elcro. If Chromium reports a sandbox error, run: sudo chown root:root chrome-sandbox && sudo chmod 4755 chrome-sandbox',
+        available: true,
+    },
+    {
+        os: 'Windows',
+        match: 'Win',
+        arch: 'x64 · arm64',
+        format: 'installer',
+        href: site.latestRelease,
+        install: 'Run the installer and launch Elcro from the Start menu. Windows packages are published on the releases page as they are built.',
+        available: false,
+    },
+    {
+        os: 'macOS',
+        match: 'Mac',
+        arch: 'Apple silicon · Intel',
+        format: 'disk image',
+        href: site.latestRelease,
+        install: 'Open the disk image and drag Elcro into Applications. macOS packages are published on the releases page as they are built.',
+        available: false,
+    },
+]
 
 export const navigation: { label: string; href?: string; items?: SiteLink[] }[] = [
     {
