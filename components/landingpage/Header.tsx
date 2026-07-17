@@ -65,7 +65,7 @@ export const Header = () => (
                                     {group.items.map(item => (
                                         <Link href={item.href} key={item.href}>
                                             {item.label}
-                                            {item.status === 'roadmap' && <em>Roadmap</em>}
+                                            {item.status && item.status !== 'available' && <em>{statusLabel[item.status]}</em>}
                                         </Link>
                                     ))}
                                 </div>

@@ -1404,6 +1404,11 @@ a {
   border-color: rgba(69, 117, 255, 0.24);
 }
 
+.menu-status-experimental {
+  color: #f0bd69;
+  border-color: rgba(240, 189, 105, .22);
+}
+
 .mobile-nav {
   display: none;
   position: relative;
@@ -1794,6 +1799,12 @@ a {
 
 .status-roadmap {
   color: #8caaff;
+}
+
+.status-experimental {
+  color: #f0bd69;
+  border-color: rgba(240, 189, 105, .22);
+  background: rgba(171, 112, 28, .08);
 }
 
 .status-information {

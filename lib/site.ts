@@ -44,7 +44,7 @@ export const navigation: { label: string; href?: string; items?: SiteLink[] }[] 
         items: [
             { label: 'Overview', href: '/product', description: 'The complete local-first workflow' },
             { label: 'Agent', href: '/product/agent', description: 'Inspect, edit, run, and iterate', status: 'available' },
-            { label: 'Tab', href: '/product/tab', description: 'FIM-powered inline completions', status: 'available' },
+            { label: 'Tab', href: '/product/tab', description: 'Experimental FIM inline completions', status: 'experimental' },
             { label: 'Quick Edit', href: '/product/quick-edit', description: 'Targeted edits with streaming diffs', status: 'available' },
             { label: 'Models', href: '/product/models', description: 'Bring your own provider or local model', status: 'available' },
             { label: 'MCP', href: '/product/mcp', description: 'Connect agent tools and services', status: 'available' },
@@ -155,6 +155,7 @@ const shipped = (
     description: string,
     highlights: string[],
     sections: SiteSection[],
+    status: PageStatus = 'available',
 ): SitePage => ({
     slug,
     shortTitle,
@@ -163,7 +164,7 @@ const shipped = (
     description,
     highlights,
     sections,
-    status: 'available',
+    status,
     primaryLabel: 'Download Elcro',
     primaryHref: site.download,
     secondaryLabel: 'View source',
@@ -242,15 +243,16 @@ const productPages: SitePage[] = [
     shipped(
         'product/tab',
         'Tab',
-        'Inline autocomplete',
-        'Stay in flow with FIM completions.',
-        'Elcro uses fill-in-the-middle model prompting to suggest inline continuations with debounce, caching, cancellation, and acceptance tracking.',
-        ['Inline suggestions', 'FIM model support', 'Low-friction accept'],
+        'Experimental inline autocomplete',
+        'Test FIM completions without mistaking them for a finished feature.',
+        'Elcro includes an experimental, disabled-by-default fill-in-the-middle provider with debounce, caching, cancellation, and acceptance tracking.',
+        ['Experimental', 'FIM models only', 'Disabled by default'],
         [
             { title: 'Built for coding models', body: 'Select a dedicated autocomplete model instead of spending an expensive chat model on every keystroke.' },
             { title: 'Responsive by design', body: 'Requests debounce while you type, cancel when context changes, and reuse safe cached results where possible.' },
             { title: 'Current boundary', body: 'Elcro Tab uses editor-local context today. Semantic repository retrieval and coordinated cross-file predictions belong to the roadmap.' },
         ],
+        'experimental',
     ),
     shipped(
         'product/quick-edit',
