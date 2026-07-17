@@ -12,9 +12,13 @@ type RouteProps = {
 
 const getPage = (segments: string[]) => pageBySlug.get(segments.join('/'))
 
-export const generateStaticParams = () => pages.map(page => ({
-    slug: page.slug.split('/'),
-}))
+// `/pricing` has a dedicated route (app/pricing/page.tsx), so exclude it here
+// to avoid two routes resolving to the same path.
+export const generateStaticParams = () => pages
+    .filter(page => page.slug !== 'pricing')
+    .map(page => ({
+        slug: page.slug.split('/'),
+    }))
 
 export const generateMetadata = ({ params }: RouteProps): Metadata => {
     const page = getPage(params.slug)
