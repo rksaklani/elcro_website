@@ -1,9 +1,9 @@
 import LandingPage from "@/components/landingpage/LandingPage";
 import { baseUrl } from "./sitemap";
 
-const title = 'Void'
-const shortTitle = 'Void'
-const description = 'Void is an open source AI IDE with full privacy.'
+const title = 'Elcro — Open-source, local-first AI coding IDE'
+const shortTitle = 'Elcro'
+const description = 'A private, open-source AI coding IDE with direct model access, local agents, autocomplete, MCP tools, and full control over your data.'
 const ogImage = `${baseUrl}/og?title=${encodeURIComponent(shortTitle)}&description=${encodeURIComponent(description)}`
 
 
@@ -52,7 +52,7 @@ export default function Home() {
             image: ogImage,
             author: {
               '@type': 'Organization',
-              name: 'Void Editor',
+              name: 'Elcro',
               url: baseUrl
             }
           }),

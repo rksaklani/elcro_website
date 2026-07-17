@@ -1,21 +1,5 @@
-
-
-import { SignUp } from "../../components/landingpage/SignUp";
-
-
-export const metadata = {
-    title: 'Get Access',
-    description: 'Join the waitlist!',
-}
-
-
+import { redirect } from 'next/navigation'
 
 export default function Page() {
-    return (<>
-        <main className='flex items-center justify-center min-h-screen '>
-            <SignUp />
-        </main>
-    </>
-    );
-};
-
+    redirect('/download-beta')
+}
