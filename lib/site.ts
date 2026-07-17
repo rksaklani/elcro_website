@@ -48,7 +48,11 @@ export type DownloadTarget = {
     href: string
     install: string
     available: boolean
+    altLabel?: string
+    altHref?: string
 }
+
+const asset = (name: string) => `${site.releases}/latest/download/${name}`
 
 export const downloadTargets: DownloadTarget[] = [
     {
@@ -56,27 +60,29 @@ export const downloadTargets: DownloadTarget[] = [
         match: 'Linux',
         arch: 'x64',
         format: 'tar.gz archive',
-        href: site.latestRelease,
-        install: 'Extract the archive and run ./elcro/elcro. If Chromium reports a sandbox error, run: sudo chown root:root chrome-sandbox && sudo chmod 4755 chrome-sandbox',
+        href: asset('Elcro-Linux-x64.tar.gz'),
+        install: 'Extract the archive and run ./elcro. If Chromium reports a sandbox error, run: sudo chown root:root chrome-sandbox && sudo chmod 4755 chrome-sandbox',
         available: true,
     },
     {
         os: 'Windows',
         match: 'Win',
-        arch: 'x64 · arm64',
-        format: 'installer',
-        href: site.latestRelease,
-        install: 'Run the installer and launch Elcro from the Start menu. Windows packages are published on the releases page as they are built.',
-        available: false,
+        arch: 'x64',
+        format: 'portable zip',
+        href: asset('Elcro-Windows-x64.zip'),
+        install: 'Extract the zip and run Elcro.exe. Windows may show a SmartScreen prompt for this unsigned beta — choose "More info" then "Run anyway".',
+        available: true,
     },
     {
         os: 'macOS',
         match: 'Mac',
-        arch: 'Apple silicon · Intel',
-        format: 'disk image',
-        href: site.latestRelease,
-        install: 'Open the disk image and drag Elcro into Applications. macOS packages are published on the releases page as they are built.',
-        available: false,
+        arch: 'Apple silicon',
+        format: 'app archive',
+        href: asset('Elcro-macOS-arm64.zip'),
+        install: 'Unzip and move Elcro.app to Applications. This beta is unsigned, so on first launch right-click the app and choose Open. Intel Macs: download the x64 build below.',
+        available: true,
+        altLabel: 'macOS Intel (x64)',
+        altHref: asset('Elcro-macOS-x64.zip'),
     },
 ]
 

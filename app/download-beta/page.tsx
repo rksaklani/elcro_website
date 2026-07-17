@@ -40,6 +40,11 @@ export default function DownloadPage() {
                                 <a className={`button ${target.available ? 'button-primary' : 'button-secondary'}`} href={target.href} target="_blank" rel="noreferrer">
                                     <Download size={17} /> {target.available ? 'Download' : 'Get from releases'}
                                 </a>
+                                {target.altHref && (
+                                    <a className="download-alt-link" href={target.altHref} target="_blank" rel="noreferrer">
+                                        {target.altLabel}
+                                    </a>
+                                )}
                                 {!target.available && <span className="download-tag">Building — grab the latest asset</span>}
                                 <p className="download-tile-install">{target.install}</p>
                             </article>
@@ -61,9 +66,9 @@ export default function DownloadPage() {
                 </section>
 
                 <div className="install-note">
-                    All installers and archives, checksums, and previous versions live on the{' '}
+                    All archives, checksums, and previous versions live on the{' '}
                     <a className="text-link" href={site.releases} target="_blank" rel="noreferrer">GitHub releases page</a>.
-                    Windows and macOS binaries are published there as each platform build completes.
+                    Builds are produced automatically for each platform from the tagged source.
                 </div>
             </div>
         </main>

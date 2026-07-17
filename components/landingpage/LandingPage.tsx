@@ -43,7 +43,7 @@ export default function LandingPage() {
                         </p>
                         <div className="hero-actions">
                             <Link className="button button-primary" href={downloadLink}>
-                                <Download size={19} /> Download for Linux
+                                <Download size={19} /> Download Elcro
                             </Link>
                             <a className="button button-secondary" href={githubLink} target="_blank" rel="noreferrer">
                                 <Github size={19} /> View source
@@ -151,7 +151,7 @@ export default function LandingPage() {
                         <h2>Download. Connect. Build.</h2>
                     </div>
                     <div className="steps">
-                        <div><span>01</span><strong>Download Elcro</strong><p>Install the native Linux x64 build.</p></div>
+                        <div><span>01</span><strong>Download Elcro</strong><p>Native builds for Linux, Windows, and macOS.</p></div>
                         <div><span>02</span><strong>Choose a provider</strong><p>Add a key or connect your local model.</p></div>
                         <div><span>03</span><strong>Open your project</strong><p>Chat, edit, run, and review in one place.</p></div>
                     </div>
