@@ -31,11 +31,10 @@ export type SitePage = {
 
 export const site = {
     name: 'Elcro',
-    description: 'Open-source, local-first AI coding IDE.',
-    github: 'https://github.com/rksaklani/elcro',
-    websiteGithub: 'https://github.com/rksaklani/elcro_website',
+    description: 'The AI code editor that keeps you in control.',
     download: '/download-beta',
     version: '0.1.3',
+    // Internal distribution host for signed builds (not surfaced as a source link).
     releases: 'https://github.com/rksaklani/elcro/releases',
     latestRelease: 'https://github.com/rksaklani/elcro/releases/tag/v0.1.3',
 }
@@ -130,13 +129,13 @@ export const navigation: { label: string; href?: string; items?: SiteLink[] }[] 
     {
         label: 'Resources',
         items: [
-            { label: 'Docs', href: '/docs', description: 'Install, configure, and build Elcro' },
+            { label: 'Docs', href: '/docs', description: 'Install, configure, and use Elcro' },
             { label: 'Changelog', href: '/changelog', description: 'Product updates and releases' },
             { label: 'Blog', href: '/blog', description: 'Product notes and technical writing' },
-            { label: 'Community', href: '/community', description: 'Build Elcro in the open' },
+            { label: 'Community', href: '/community', description: 'Tips, workflows, and requests' },
             { label: 'Workshops', href: '/workshops', description: 'Community-led learning sessions' },
             { label: 'Brand', href: '/brand', description: 'Logos and usage guidance' },
-            { label: 'Careers', href: '/careers', description: 'Contribute before there are jobs' },
+            { label: 'Careers', href: '/careers', description: 'Help build Elcro' },
         ],
     },
     { label: 'Pricing', href: '/pricing' },
@@ -173,7 +172,6 @@ export const footerGroups: { label: string; links: SiteLink[] }[] = [
             { label: 'Blog', href: '/blog' },
             { label: 'Community', href: '/community' },
             { label: 'Workshops', href: '/workshops' },
-            { label: 'GitHub', href: site.github },
         ],
     },
     {
@@ -193,7 +191,6 @@ export const footerGroups: { label: string; links: SiteLink[] }[] = [
             { label: 'Privacy', href: '/privacy' },
             { label: 'Terms', href: '/terms' },
             { label: 'Data use', href: '/data-use' },
-            { label: 'Licenses', href: `${site.github}/blob/main/LICENSE.txt` },
         ],
     },
 ]
@@ -218,8 +215,8 @@ const shipped = (
     status,
     primaryLabel: 'Download Elcro',
     primaryHref: site.download,
-    secondaryLabel: 'View source',
-    secondaryHref: site.github,
+    secondaryLabel: 'See pricing',
+    secondaryHref: '/pricing',
 })
 
 const planned = (
@@ -234,11 +231,11 @@ const planned = (
     eyebrow: 'On the roadmap',
     title,
     description,
-    highlights: ['Not shipped', 'No release date promised', 'Open design discussion'],
+    highlights: ['Not shipped', 'No release date promised', 'In active design'],
     sections,
     status: 'roadmap',
-    primaryLabel: 'Follow the roadmap',
-    primaryHref: `${site.github}/issues`,
+    primaryLabel: 'View the roadmap',
+    primaryHref: '/roadmap',
     secondaryLabel: 'Use Elcro today',
     secondaryHref: site.download,
 })
@@ -260,8 +257,8 @@ const info = (
     highlights,
     sections,
     status: 'information',
-    primaryLabel: 'Explore on GitHub',
-    primaryHref: site.github,
+    primaryLabel: 'Download Elcro',
+    primaryHref: site.download,
 })
 
 const productPages: SitePage[] = [
@@ -270,7 +267,7 @@ const productPages: SitePage[] = [
         'Product',
         'The local-first AI editor',
         'One editor from first thought to reviewed change.',
-        'Elcro combines an extensible Code - OSS foundation with agentic chat, inline completions, targeted edits, direct model access, MCP tools, and file checkpoints.',
+        'Elcro combines a familiar VS Code-based foundation with agentic chat, inline completions, targeted edits, direct model access, MCP tools, and file checkpoints.',
         ['Agentic chat', 'FIM autocomplete', 'Direct providers'],
         [
             { title: 'Work at the right level', body: 'Use Tab for small continuations, Quick Edit for a selection, or Agent mode for work that spans files and commands.', items: ['Tab completions', 'Quick Edit and Apply', 'Normal, Gather, and Agent chat modes'] },
@@ -328,7 +325,7 @@ const productPages: SitePage[] = [
         [
             { title: 'Direct provider access', body: 'Elcro sends requests to the endpoint configured for each provider rather than requiring an Elcro inference proxy.' },
             { title: 'Local is a first-class choice', body: 'Elcro can discover locally running providers and supports Ollama, vLLM, LM Studio, and compatible endpoints.' },
-            { title: 'Provider costs still apply', body: 'Elcro is free software. Hosted model usage is billed by the provider you choose.' },
+            { title: 'Provider costs still apply', body: 'Hosted model usage is billed by the provider you choose, separately from your Elcro plan.' },
         ],
     ),
     shipped(
@@ -362,12 +359,12 @@ const productPages: SitePage[] = [
         'Privacy',
         'No mandatory Elcro cloud',
         'Your provider relationship stays direct.',
-        'Elcro does not require an account or route model requests through an Elcro-managed inference backend. The current fork also disables the original Void analytics destination.',
-        ['No Elcro account', 'No Elcro inference proxy', 'Local configuration'],
+        'Elcro does not require an account or route model requests through an Elcro-managed inference backend, and sends no product analytics.',
+        ['No mandatory account', 'No Elcro inference proxy', 'Local configuration'],
         [
             { title: 'Know where requests go', body: 'Model prompts go to the provider or local endpoint you configure. That provider’s data policy still applies.' },
             { title: 'Local product state', body: 'Settings, chat state, and workspace operations live in the desktop application rather than a hosted Elcro account.' },
-            { title: 'Read the source', body: 'The editor, agent tools, provider adapters, and build configuration are available in the public repository.' },
+            { title: 'Your code is yours', body: 'Elcro never uses your code or prompts to train models, and does not send them to Elcro servers.' },
         ],
     ),
 ]
@@ -376,10 +373,10 @@ const roadmapPages: SitePage[] = [
     info(
         'roadmap',
         'Roadmap',
-        'Build in public',
+        'What is shipped and what is next',
         'What Elcro has, what comes next, and what is only an idea.',
         'The roadmap separates shipped capabilities from experiments and future work. It is directional, not a promise of dates or commercial availability.',
-        ['Transparent status', 'Community issues', 'No invented launch dates'],
+        ['Transparent status', 'Honest labels', 'No invented launch dates'],
         [
             { title: 'Near-term foundation', body: 'Improve distribution, model compatibility, edit reliability, documentation, and local retrieval before adding expensive infrastructure.' },
             { title: 'Local power next', body: 'Semantic indexing, browser tooling, review workflows, skills, hooks, and isolated worktrees can make the local product substantially stronger.' },
@@ -425,18 +422,18 @@ const roadmapPages: SitePage[] = [
 ]
 
 const docsPages: SitePage[] = [
-    info('docs', 'Documentation', 'Learn Elcro', 'From first launch to building the IDE.', 'Practical guides for installing Elcro, choosing models, using Agent, connecting MCP tools, and building from source.', ['Install', 'Configure', 'Contribute'], [
-        { title: 'Start here', body: 'Download the Linux build or compile from source, then open a project and configure at least one model provider.', items: ['Install Elcro', 'Configure a provider', 'Choose feature models', 'Run your first Agent task'] },
-        { title: 'Core guides', body: 'Read focused pages for local models, Agent modes, MCP servers, privacy, and source builds.' },
+    info('docs', 'Documentation', 'Learn Elcro', 'From first launch to a reviewed change.', 'Practical guides for installing Elcro, choosing models, using Agent, connecting MCP tools, and getting the most from your plan.', ['Install', 'Configure', 'Use'], [
+        { title: 'Start here', body: 'Download the app for your platform, then open a project and configure at least one model provider.', items: ['Install Elcro', 'Configure a provider', 'Choose feature models', 'Run your first Agent task'] },
+        { title: 'Core guides', body: 'Read focused pages for local models, Agent modes, MCP servers, and privacy.' },
     ]),
-    info('docs/getting-started', 'Getting started', 'Documentation', 'Your first ten minutes with Elcro.', 'Install the desktop build, choose a provider, open a project, and make a reviewed AI edit.', ['No account', 'One provider', 'One reviewed change'], [
-        { title: '1. Install', body: 'Download and extract the Linux x64 archive. Start the Elcro executable from the extracted directory.', code: 'tar -xzf elcro-linux-x64.tar.gz\n./elcro/elcro' },
+    info('docs/getting-started', 'Getting started', 'Documentation', 'Your first ten minutes with Elcro.', 'Install the desktop app, choose a provider, open a project, and make a reviewed AI edit.', ['Quick install', 'One provider', 'One reviewed change'], [
+        { title: '1. Install', body: 'Download Elcro for your platform from the download page and launch it.' },
         { title: '2. Choose a model', body: 'Open Elcro Settings, enable a provider, add its endpoint or API key, and assign models to Chat, Autocomplete, Quick Edit, and Apply.' },
-        { title: '3. Try the workflow', body: 'Open a repository, ask Agent to explain one area, use Quick Edit on a selection, and review the resulting diff.' },
+        { title: '3. Try the workflow', body: 'Open a project, ask Agent to explain one area, use Quick Edit on a selection, and review the resulting diff.' },
     ]),
-    info('docs/install', 'Install', 'Documentation', 'Install Elcro on Linux.', 'The first public binary is a Linux x64 archive. Windows and macOS packages are not published yet.', ['Linux x64', 'tar.gz', 'Version 0.1.0'], [
-        { title: 'Extract and run', body: 'Download the release archive, extract it, and launch the executable.', code: 'tar -xzf elcro-linux-x64.tar.gz\ncd elcro\n./elcro' },
-        { title: 'Chromium sandbox', body: 'If the packaged Chromium sandbox reports incorrect ownership or mode, configure it once with root privileges.', code: 'sudo chown root:root chrome-sandbox\nsudo chmod 4755 chrome-sandbox' },
+    info('docs/install', 'Install', 'Documentation', 'Install Elcro on your platform.', 'Elcro ships desktop apps for Windows, macOS, and Linux. Download the build for your platform from the download page.', ['Windows', 'macOS', 'Linux'], [
+        { title: 'Windows and macOS', body: 'Download the installer or app archive, then launch Elcro. On first launch, start your free trial.' },
+        { title: 'Linux', body: 'Download and extract the archive, then launch the executable.', code: 'tar -xzf Elcro-Linux-x64.tar.gz\ncd VSCode-linux-x64\n./elcro' },
     ]),
     info('docs/models', 'Models', 'Documentation', 'Configure providers and feature models.', 'Elcro lets each AI feature use a separate provider and model.', ['Chat', 'Autocomplete', 'Quick Edit and Apply'], [
         { title: 'Provider settings', body: 'Enable a provider, add the required API key or endpoint, refresh available models when supported, and verify the selected model.' },
@@ -456,83 +453,82 @@ const docsPages: SitePage[] = [
         { title: 'Add a server', body: 'Open the MCP configuration from Elcro Settings and define a local command or remote endpoint. Restart or refresh the server after editing.' },
         { title: 'Review trust', body: 'An MCP server can expose powerful tools. Inspect its source, command, environment, and network destination before enabling it.' },
     ]),
-    info('docs/build', 'Build from source', 'Documentation', 'Compile and package Elcro.', 'Elcro follows the Void and Code - OSS build pipeline and currently targets Node.js 20.18.2.', ['Node 20.18.2', 'npm', 'Gulp'], [
-        { title: 'Install and compile', body: 'Install the documented native dependencies before installing npm packages.', code: 'nvm install\nnvm use\nnpm install\nnpm run buildreact\nnpm run compile' },
-        { title: 'Package Linux x64', body: 'Create a runnable application directory outside the repository.', code: 'npm run gulp vscode-linux-x64' },
+    info('docs/updates', 'Updates', 'Documentation', 'Keep Elcro up to date.', 'Elcro publishes new desktop builds for each platform. Download the latest version from the download page or update from inside the editor when prompted.', ['Latest build', 'All platforms', 'In-app prompts'], [
+        { title: 'Get the latest', body: 'Visit the download page to grab the newest release for Windows, macOS, or Linux.' },
+        { title: 'Release notes', body: 'The changelog summarizes what changed in each version.' },
     ]),
 ]
 
 const resourcePages: SitePage[] = [
-    info('pricing', 'Pricing', 'Simple today', 'The editor is free. Your provider sets the model cost.', 'Elcro is open-source software with no paid Elcro subscription today. Use local models for local compute costs or bring an API key from a hosted provider.', ['Elcro: free', 'BYOK', 'Cloud services: not sold'], [
-        { title: 'Open-source desktop', body: 'Download, inspect, build, and modify Elcro under the repository’s applicable licenses.', items: ['No Elcro seat fee', 'No account required', 'Community support through GitHub'] },
-        { title: 'Model usage', body: 'Hosted providers charge according to their own plans and API pricing. Elcro does not bundle model credits.' },
-        { title: 'Future services', body: 'Team administration, hosted agents, and managed automation are roadmap concepts, not purchasable plans.' },
+    info('pricing', 'Pricing', 'Plans for every developer', 'Start free. Upgrade when you need more.', 'Elcro offers a free trial to explore the editor, then paid Pro and Team plans for daily professional work. Bring your own model key or use local models on any plan.', ['Free trial', 'Pro for individuals', 'Team for organizations'], [
+        { title: 'Free trial', body: 'Explore Elcro with the full editor and a capped number of AI actions. No credit card required to start.', items: ['Full editor', 'Limited AI actions', 'Bring your own key'] },
+        { title: 'Pro', body: 'For developers who use AI every day. Higher limits, priority model routing, and all shipped product features.', items: ['Unlimited editor use', 'Higher AI limits', 'Priority support'] },
+        { title: 'Team', body: 'For organizations that want shared billing and central management. Seat-based pricing with volume options.', items: ['Centralized billing', 'Seat management', 'Volume discounts'] },
     ]),
     info('teams', 'Teams', 'Use Elcro together', 'Shared code, explicit configuration, no new platform required.', 'Teams can adopt the desktop editor, commit project instructions, share MCP setup patterns, and use their existing Git workflow. Centralized administration is not shipped.', ['Git-based collaboration', 'Shared project guidance', 'No team dashboard'], [
-        { title: 'What works today', body: 'Standardize editor settings, provider guidance, project rules, and contribution workflows in the repository.' },
+        { title: 'What works today', body: 'Standardize editor settings, provider guidance, and project rules across your team’s repositories.' },
         { title: 'What does not', body: 'Elcro has no centralized billing, organization accounts, team analytics, enforced rules, SSO, or managed marketplace.' },
     ]),
-    info('enterprise', 'Enterprise', 'Self-managed foundation', 'Local-first architecture for organizations that value control.', 'Elcro can be evaluated and built internally, but it is not an enterprise SaaS product and holds no Elcro-specific compliance certifications.', ['Source available', 'Direct providers', 'No enterprise control plane'], [
-        { title: 'Useful today', body: 'Inspect the source, pin a build, choose approved providers, use internal compatible endpoints, and distribute through existing software management.' },
+    info('enterprise', 'Enterprise', 'Control-first foundation', 'Architecture for organizations that value control.', 'Elcro can be evaluated and deployed with your approved providers, but it is an early product and holds no Elcro-specific compliance certifications yet.', ['Direct providers', 'Private by design', 'Roadmap controls'], [
+        { title: 'Useful today', body: 'Pin a version, choose approved providers, use internal compatible endpoints, and distribute through existing software management.' },
         { title: 'Not claimed', body: 'No SOC 2 report, SSO, SCIM, audit dashboard, centralized policy service, contractual SLA, or managed support is currently offered.' },
-        { title: 'Evaluate deliberately', body: 'Organizations should complete their own code, dependency, provider, endpoint, update, and extension review before deployment.' },
+        { title: 'Evaluate deliberately', body: 'Organizations should complete their own provider, endpoint, update, and extension review before deployment.' },
     ]),
-    info('security', 'Security', 'Architecture and disclosure', 'Security starts with accurate boundaries.', 'Elcro is an early open-source fork. This page documents the current trust model without claiming third-party certification.', ['No certification claim', 'Provider-aware threat model', 'Public issue tracking'], [
+    info('security', 'Security', 'Architecture and disclosure', 'Security starts with accurate boundaries.', 'Elcro is an early product. This page documents the current trust model without claiming third-party certification.', ['No certification claim', 'Provider-aware threat model', 'Coordinated disclosure'], [
         { title: 'Client and extensions', body: 'The desktop app can read and modify workspace files, run terminal commands, load extensions, and connect to configured services. Treat those capabilities as privileged.' },
-        { title: 'Agent safety', body: 'Review tool approvals, diffs, terminal commands, MCP servers, model endpoints, and generated code. Use Git and backups.' },
-        { title: 'Report a vulnerability', body: 'Avoid publishing sensitive exploit details in a public issue. Contact the repository owner through GitHub to coordinate a private report.' },
+        { title: 'Agent safety', body: 'Review tool approvals, diffs, terminal commands, MCP servers, model endpoints, and generated code. Use version control and backups.' },
+        { title: 'Report a vulnerability', body: 'Email the Elcro security contact to coordinate a private report. Avoid publishing sensitive exploit details publicly before a fix ships.' },
     ]),
     info('data-use', 'Data use', 'Plain-language data flow', 'Elcro has no account database or inference proxy.', 'The desktop app stores product state locally and sends AI requests to the provider or endpoint you configure. Extensions and MCP servers have their own behavior.', ['Local app state', 'Configured providers', 'No Elcro analytics destination'], [
         { title: 'Model requests', body: 'Prompts can contain code and conversation context. They go to the configured model endpoint, so its privacy and retention policy governs that request.' },
         { title: 'Local state', body: 'Settings, chat history, checkpoints, logs, caches, and extension data can exist on the workstation.' },
         { title: 'Third-party integrations', body: 'Extensions, MCP servers, model providers, Git hosts, and downloaded updates are separate systems. Review each one before use.' },
     ]),
-    info('changelog', 'Changelog', 'Releases', 'A short record of what changed.', 'Elcro publishes source history and version tags on GitHub. This website will add editorial release notes as the project grows.', ['0.1.0 initial build', 'Git history', 'Release tags'], [
-        { title: 'Elcro 0.1.0', body: 'Initial rebrand, Linux x64 build, Elcro artwork, direct-provider privacy positioning, upstream analytics removal, and the first product website.' },
-        { title: 'Follow development', body: 'Use GitHub commits, issues, tags, and releases as the current source of truth.' },
+    info('changelog', 'Changelog', 'Releases', 'A short record of what changed.', 'Elcro publishes new desktop builds for each platform. This page adds editorial release notes as the product grows.', ['0.1 initial build', 'Multi-platform', 'Regular updates'], [
+        { title: 'Elcro 0.1', body: 'First desktop release for Windows, macOS, and Linux with agentic chat, Quick Edit, autocomplete, direct-provider model access, MCP tools, and checkpoints.' },
+        { title: 'Follow along', body: 'Watch this page and in-app update prompts for the latest versions.' },
     ]),
-    info('blog', 'Blog', 'Notes from the project', 'Technical writing without invented momentum.', 'The Elcro blog starts with the decisions behind a local-first open-source AI editor.', ['Product notes', 'Architecture', 'Community'], [
-        { title: 'Why Elcro is local first', body: 'A coding agent is powerful enough to deserve explicit endpoints, visible tools, reviewable changes, and an editor that can be inspected.' },
-        { title: 'Building on Void and Code - OSS', body: 'Elcro starts from established open-source work. The responsibility is to preserve attribution while creating a distinct, maintained product.' },
+    info('blog', 'Blog', 'Notes from the team', 'Technical writing without invented momentum.', 'The Elcro blog covers the decisions behind a private, control-first AI editor.', ['Product notes', 'Architecture', 'Workflows'], [
+        { title: 'Why Elcro is private by design', body: 'A coding agent is powerful enough to deserve explicit endpoints, visible tools, and reviewable changes, without sending your code to a vendor.' },
+        { title: 'Control as a feature', body: 'Direct model access, bring-your-own-key, and local models keep you in charge of cost, latency, and data.' },
         { title: 'What comes next', body: 'Distribution quality, model support, reliable edits, semantic retrieval, browser evidence, and worktree isolation matter more than a long list of unchecked boxes.' },
     ]),
-    info('community', 'Community', 'Build in the open', 'The project lives where the code lives.', 'Use GitHub to report issues, discuss designs, contribute code, improve documentation, and help prioritize the roadmap.', ['Issues', 'Discussions', 'Pull requests'], [
-        { title: 'Contribute a focused change', body: 'Start with a reproducible problem, explain the intended behavior, keep the patch reviewable, and include verification.' },
-        { title: 'Shape the roadmap', body: 'Bring concrete use cases and constraints. A roadmap item needs a safety, privacy, maintenance, and testing story—not only a demo.' },
+    info('community', 'Community', 'Connect with users', 'A place for Elcro users to share and learn.', 'Join other Elcro users to share workflows, prompts, provider setups, and tips. Feature requests and bug reports are welcome through our support channels.', ['Share workflows', 'Ask questions', 'Request features'], [
+        { title: 'Share what works', body: 'Post reliable Agent prompts, provider configurations, and MCP setups that make you faster.' },
+        { title: 'Shape the roadmap', body: 'Bring concrete use cases and constraints. Well-described requests help prioritize what ships next.' },
     ]),
-    info('workshops', 'Workshops', 'Community learning', 'Teach practical workflows, not product theater.', 'Elcro does not run an official event program yet. Community members can propose recorded or live sessions through GitHub Discussions.', ['No scheduled events', 'Community proposals', 'Reusable materials'], [
-        { title: 'Suggested sessions', body: 'Local models with Ollama, reliable Agent prompts, MCP server safety, building Elcro, and reviewing AI-generated diffs.' },
-        { title: 'Host responsibly', body: 'Publish prerequisites, sample repositories, commands, expected costs, and recordings or notes when possible.' },
+    info('workshops', 'Workshops', 'Learn from the team', 'Practical workflows, not product theater.', 'Elcro is building a program of recorded and live sessions to help you get more from the editor.', ['Guided sessions', 'Practical workflows', 'Reusable materials'], [
+        { title: 'Suggested sessions', body: 'Local models with Ollama, reliable Agent prompts, MCP server safety, and reviewing AI-generated diffs.' },
+        { title: 'Get notified', body: 'Watch this page for upcoming session dates and recordings.' },
     ]),
-    info('brand', 'Brand', 'Elcro identity', 'A fast mark for a developer-controlled tool.', 'Use the official Elcro icon and wordmark from this repository. Do not imply endorsement, certification, or an official relationship with upstream projects.', ['Icon', 'Wordmark', 'Attribution'], [
-        { title: 'Assets', body: 'The website repository contains the square icon and full wordmark under public/elcro.' },
+    info('brand', 'Brand', 'Elcro identity', 'A fast mark for a developer-controlled tool.', 'Use the official Elcro icon and wordmark provided in our brand kit. Do not imply endorsement, certification, or an official relationship with other products.', ['Icon', 'Wordmark', 'Guidelines'], [
+        { title: 'Assets', body: 'The brand kit includes the square icon and full wordmark in dark and light variants.' },
         { title: 'Usage', body: 'Keep sufficient contrast and clear space. Do not distort, recolor individual mark elements, or combine the Elcro name with third-party product names.' },
-        { title: 'Upstream attribution', body: 'Elcro is based on Void and Code - OSS. Preserve applicable licenses and notices in distributions.' },
     ]),
-    info('careers', 'Careers', 'Not hiring yet', 'Contribute before there is a company careers page.', 'Elcro does not currently advertise paid roles. The best way to participate is through focused open-source contributions.', ['No open roles', 'Open-source contributions', 'Public roadmap'], [
-        { title: 'Where help matters', body: 'Build reliability, packaging, model adapters, tests, docs, semantic retrieval, browser tooling, accessibility, and security review.' },
-        { title: 'Show the work', body: 'Open an issue or pull request with a clear problem statement, implementation, verification, and tradeoffs.' },
+    info('careers', 'Careers', 'Growing the team', 'Help build the AI editor developers control.', 'Elcro is early and growing. If you care about developer tools, performance, and privacy, we would like to hear from you.', ['Product', 'Engineering', 'Design'], [
+        { title: 'Where help matters', body: 'Reliability, packaging, model adapters, semantic retrieval, browser tooling, accessibility, and security.' },
+        { title: 'Get in touch', body: 'Reach out through our contact channel with your background and what you would like to work on.' },
     ]),
-    info('about', 'About', 'An open-source fork with a direction', 'A private, local-first AI coding environment.', 'Elcro combines the Void AI editor architecture with a distinct product identity focused on direct providers, local models, and transparent development.', ['Based on Void', 'Built on Code - OSS', 'Independent Elcro project'], [
-        { title: 'Why this exists', body: 'Developers should be able to inspect the agent, choose the model path, and keep a capable editor without a mandatory hosted account.' },
-        { title: 'What this is not', body: 'Elcro is not affiliated with Cursor, Microsoft, or the former Void maintainers. It preserves upstream attribution under the applicable licenses.' },
+    info('about', 'About', 'A product with a direction', 'A private, control-first AI coding environment.', 'Elcro is an AI code editor focused on direct model providers, local models, privacy, and keeping developers in control of their data.', ['Private by design', 'Direct providers', 'Independent product'], [
+        { title: 'Why this exists', body: 'Developers should be able to choose the model path and keep a capable editor without a mandatory hosted account or handing over their code.' },
+        { title: 'What this is not', body: 'Elcro is not affiliated with Cursor or Microsoft.' },
     ]),
-    info('contact', 'Contact', 'Start on GitHub', 'Questions, bugs, ideas, and security reports.', 'Elcro does not operate a separate support desk today. GitHub provides the durable public record for project communication.', ['Issues', 'Discussions', 'Security coordination'], [
-        { title: 'Product support', body: 'Search existing issues before opening a new report. Include OS, build version, logs, expected behavior, and reproduction steps.' },
-        { title: 'Security', body: 'Request a private coordination channel from the repository owner rather than posting sensitive vulnerability details publicly.' },
+    info('contact', 'Contact', 'Get in touch', 'Questions, bugs, ideas, and security reports.', 'Reach the Elcro team for product help, sales questions, or security reports.', ['Support', 'Sales', 'Security'], [
+        { title: 'Product support', body: 'Include your OS, app version, expected behavior, and reproduction steps so we can help quickly.' },
+        { title: 'Security', body: 'Email our security contact for a private coordination channel rather than posting sensitive vulnerability details publicly.' },
     ]),
-    info('privacy', 'Privacy policy', 'Legal information', 'Privacy for the Elcro website and desktop app.', 'This is a plain-language project policy, not a substitute for the policies of model providers, extensions, MCP servers, GitHub, or a future hosting provider.', ['No website account', 'No Elcro inference proxy', 'Third parties remain separate'], [
-        { title: 'Website', body: 'The current website does not provide account creation, payment, or product telemetry services. Hosting infrastructure may retain standard request logs.' },
+    info('privacy', 'Privacy policy', 'Legal information', 'Privacy for the Elcro website and desktop app.', 'This is a plain-language policy, not a substitute for the policies of model providers, extensions, MCP servers, or payment processors.', ['Minimal website data', 'No Elcro inference proxy', 'Third parties remain separate'], [
+        { title: 'Website', body: 'The website collects only what is needed to provide the service and process payments. Hosting infrastructure may retain standard request logs.' },
         { title: 'Desktop', body: 'The app stores state locally and contacts services selected by the user, including model providers, extension sources, Git remotes, and MCP servers.' },
-        { title: 'Changes', body: 'Material policy changes should be recorded in the public repository.' },
+        { title: 'Changes', body: 'Material policy changes will be posted on this page.' },
     ]),
-    info('terms', 'Terms', 'Legal information', 'Use Elcro responsibly.', 'Elcro is provided under the licenses and notices in its source repository, without a separate paid service agreement.', ['Open-source licenses', 'No warranty beyond licenses', 'User-controlled integrations'], [
-        { title: 'Software license', body: 'Your rights and obligations come from the applicable repository licenses and third-party notices.' },
+    info('terms', 'Terms', 'Legal information', 'Use Elcro responsibly.', 'Elcro is provided under the Elcro end-user license agreement and the plan you purchase.', ['License agreement', 'Paid plans', 'User-controlled integrations'], [
+        { title: 'Software license', body: 'Your rights and obligations come from the Elcro end-user license agreement and applicable third-party notices.' },
         { title: 'Generated code', body: 'You are responsible for reviewing generated output, commands, dependencies, security, correctness, and licensing before use.' },
         { title: 'Third parties', body: 'Model providers, extensions, MCP servers, Git hosts, and other integrations have separate terms.' },
     ]),
-    info('students', 'Students', 'Learn in the open', 'Use and study the same source you run.', 'Elcro has no formal student program or credits. Students can use the free editor, local models, source code, and community documentation.', ['Free editor', 'Source available', 'No student credits program'], [
-        { title: 'Learn by building', body: 'Trace the provider pipeline, add a model adapter, improve a tool, write tests, or document an internal subsystem.' },
+    info('students', 'Students', 'Discounts for learners', 'Build and learn with Elcro.', 'Elcro plans a student discount program. Students can start with the free trial and bring their own local models today.', ['Free trial', 'Local models', 'Student discount planned'], [
+        { title: 'Get started', body: 'Download Elcro, start the free trial, and connect a local model with Ollama to keep costs low while you learn.' },
         { title: 'Manage model costs', body: 'Use local models when hardware permits, or review provider free tiers and education programs independently.' },
     ]),
     info('research', 'Research', 'Open engineering questions', 'Measure before making frontier claims.', 'Elcro does not run a formal AI research lab. Research-oriented work should be reproducible, benchmarked, and connected to product reliability.', ['Evaluation harnesses', 'Retrieval quality', 'Edit reliability'], [

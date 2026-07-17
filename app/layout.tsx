@@ -7,14 +7,14 @@ import { site } from '@/lib/site'
 export const metadata: Metadata = {
     metadataBase: new URL(process.env.BASE_URL || 'http://localhost:3000'),
     title: {
-        default: 'Elcro — Open-source, local-first AI coding IDE',
+        default: 'Elcro — The AI code editor that keeps you in control',
         template: '%s — Elcro',
     },
     description: site.description,
     applicationName: site.name,
-    keywords: ['AI code editor', 'open source IDE', 'local AI', 'coding agent', 'MCP', 'Ollama'],
-    authors: [{ name: 'Elcro contributors', url: site.github }],
-    creator: 'Elcro contributors',
+    keywords: ['AI code editor', 'AI IDE', 'local AI', 'coding agent', 'MCP', 'Ollama'],
+    authors: [{ name: 'Elcro' }],
+    creator: 'Elcro',
     icons: {
         icon: '/elcro/favicon.png',
         apple: '/elcro/icon.png',

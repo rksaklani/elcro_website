@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { ArrowUpRight, Github } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 import { footerGroups, site } from '@/lib/site'
 
 export const Footer = () => (
@@ -11,12 +11,10 @@ export const Footer = () => (
                     <Image src="/elcro/icon.png" alt="" width={34} height={34} />
                     <span>elcro</span>
                 </Link>
-                <p>Open-source AI coding,<br />under your control.</p>
+                <p>AI coding,<br />under your control.</p>
                 <div className="footer-actions">
                     <Link className="button button-small button-primary" href={site.download}>Download</Link>
-                    <a className="icon-link" href={site.github} target="_blank" rel="noreferrer" aria-label="Elcro on GitHub">
-                        <Github size={18} />
-                    </a>
+                    <Link className="button button-small button-secondary" href="/pricing">Pricing</Link>
                 </div>
             </div>
 
@@ -36,8 +34,8 @@ export const Footer = () => (
             </div>
 
             <div className="footer-legal">
-                <span>© {new Date().getFullYear()} Elcro. Open-source project.</span>
-                <span>Based on Void and Code - OSS. Not affiliated with Cursor or Microsoft.</span>
+                <span>© {new Date().getFullYear()} Elcro. All rights reserved.</span>
+                <span>Elcro is a trademark of its respective owner. Not affiliated with Cursor or Microsoft.</span>
             </div>
         </div>
     </footer>

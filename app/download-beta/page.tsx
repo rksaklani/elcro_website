@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import { Apple, Download, Github, MonitorDown, Terminal } from 'lucide-react'
+import { Apple, Download, MonitorDown, Terminal } from 'lucide-react'
 import { downloadTargets, site } from '@/lib/site'
 
 export const metadata: Metadata = {
     title: 'Download',
-    description: 'Download the open-source, local-first Elcro AI coding IDE for Linux, Windows, and macOS.',
+    description: 'Download the Elcro AI code editor for Linux, Windows, and macOS.',
     alternates: { canonical: '/download-beta' },
 }
 
@@ -21,11 +21,11 @@ export default function DownloadPage() {
             <div className="site-container">
                 <section className="download-hero">
                     <Image src="/elcro/icon.png" alt="Elcro icon" width={86} height={86} priority />
-                    <div className="eyebrow"><Download size={14} /> Open source · Version {site.version}</div>
+                    <div className="eyebrow"><Download size={14} /> Version {site.version}</div>
                     <h1>Download Elcro.</h1>
                     <p>
-                        Get the Elcro desktop build for your platform. No account, subscription,
-                        or mandatory cloud connection required.
+                        Get the Elcro desktop app for your platform, then start your free trial.
+                        No mandatory cloud connection required.
                     </p>
                 </section>
 
@@ -52,23 +52,10 @@ export default function DownloadPage() {
                     })}
                 </section>
 
-                <section className="download-card">
-                    <div className="download-card-main">
-                        <div className="download-card-icon"><Github size={25} /></div>
-                        <div>
-                            <h2>Build from source</h2>
-                            <p>Inspect every line, contribute, or produce your own platform build.</p>
-                        </div>
-                    </div>
-                    <a className="button button-secondary" href={site.github} target="_blank" rel="noreferrer">
-                        Open GitHub
-                    </a>
-                </section>
-
                 <div className="install-note">
-                    All archives, checksums, and previous versions live on the{' '}
-                    <a className="text-link" href={site.releases} target="_blank" rel="noreferrer">GitHub releases page</a>.
-                    Builds are produced automatically for each platform from the tagged source.
+                    Every download is the full Elcro desktop app. Start a free trial on first launch,
+                    then upgrade to a paid plan from inside the editor or the{' '}
+                    <a className="text-link" href="/pricing">pricing page</a>.
                 </div>
             </div>
         </main>

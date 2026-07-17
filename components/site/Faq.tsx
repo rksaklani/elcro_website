@@ -3,11 +3,11 @@ import { HelpCircle } from 'lucide-react'
 const questions = [
     {
         question: 'Does Elcro require an account?',
-        answer: 'No. The desktop app can be installed and configured without an Elcro account.',
+        answer: 'You can install and try Elcro without an account. Paid plans unlock the full experience.',
     },
     {
-        question: 'Is Elcro free?',
-        answer: 'The editor is open-source and has no Elcro subscription. Hosted model providers may charge for their APIs.',
+        question: 'How much does Elcro cost?',
+        answer: 'Elcro offers a free trial, then paid Pro and Team plans. See the pricing page for current tiers. Hosted model providers may also charge for their APIs.',
     },
     {
         question: 'Can I run local models?',

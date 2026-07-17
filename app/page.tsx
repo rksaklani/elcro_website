@@ -1,9 +1,9 @@
 import LandingPage from "@/components/landingpage/LandingPage";
 import { baseUrl } from "./sitemap";
 
-const title = 'Elcro — Open-source, local-first AI coding IDE'
+const title = 'Elcro — The AI code editor that keeps you in control'
 const shortTitle = 'Elcro'
-const description = 'A private, open-source AI coding IDE with direct model access, local agents, autocomplete, MCP tools, and full control over your data.'
+const description = 'A private AI code editor with direct model access, local agents, autocomplete, MCP tools, and full control over your data.'
 const ogImage = `${baseUrl}/og?title=${encodeURIComponent(shortTitle)}&description=${encodeURIComponent(description)}`
 
 
@@ -50,15 +50,10 @@ export default function Home() {
             name: shortTitle,
             description: description,
             applicationCategory: 'DeveloperApplication',
-            operatingSystem: 'Linux',
-            softwareVersion: '0.1.0',
+            operatingSystem: 'Windows, macOS, Linux',
+            softwareVersion: '0.1.3',
             url: baseUrl,
             image: ogImage,
-            offers: {
-              '@type': 'Offer',
-              price: '0',
-              priceCurrency: 'USD',
-            },
             author: {
               '@type': 'Organization',
               name: 'Elcro',

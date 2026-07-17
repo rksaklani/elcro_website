@@ -6,13 +6,12 @@ import {
     Code2,
     Cpu,
     Download,
-    Github,
     LockKeyhole,
     ShieldCheck,
     Sparkles,
     SquareTerminal,
 } from 'lucide-react'
-import { downloadLink, githubLink } from '../links'
+import { downloadLink } from '../links'
 import { FeatureGrid } from '../site/FeatureGrid'
 import { Faq } from '../site/Faq'
 import { ProductDemo } from '../site/ProductDemo'
@@ -35,29 +34,29 @@ export default function LandingPage() {
                 <div className="hero-glow hero-glow-two" />
                 <div className="site-container hero-content">
                     <div className="hero-copy">
-                        <div className="eyebrow"><span /> Open source. Local first.</div>
+                        <div className="eyebrow"><span /> Private by design.</div>
                         <h1>Your code stays <span>yours.</span></h1>
                         <p>
-                            Elcro is the AI coding IDE for developers who want powerful agents,
+                            Elcro is the AI code editor for developers who want powerful agents,
                             direct model access, and complete control over their data.
                         </p>
                         <div className="hero-actions">
                             <Link className="button button-primary" href={downloadLink}>
                                 <Download size={19} /> Download Elcro
                             </Link>
-                            <a className="button button-secondary" href={githubLink} target="_blank" rel="noreferrer">
-                                <Github size={19} /> View source
-                            </a>
+                            <Link className="button button-secondary" href="/pricing">
+                                See pricing <ArrowRight size={18} />
+                            </Link>
                         </div>
                         <div className="hero-note">
                             <ShieldCheck size={16} />
-                            No mandatory account · BYOK · Local models supported
+                            Bring your own key · Local models supported · Free trial
                         </div>
                     </div>
                     <div className="hero-product">
                         <div className="product-badge">
                             <Image src="/elcro/icon.png" alt="" width={38} height={38} priority />
-                            <div><strong>Elcro 0.1</strong><span>Built on Code - OSS</span></div>
+                            <div><strong>Elcro 0.1</strong><span>Windows · macOS · Linux</span></div>
                         </div>
                         <ProductDemo />
                     </div>
@@ -68,8 +67,8 @@ export default function LandingPage() {
                 <div className="site-container principle-grid">
                     <div><strong>Direct</strong><span>Requests go to your provider</span></div>
                     <div><strong>Portable</strong><span>Your models, keys, and tools</span></div>
-                    <div><strong>Inspectable</strong><span>Open source from UI to agent</span></div>
-                    <div><strong>Compatible</strong><span>Built on the VS Code foundation</span></div>
+                    <div><strong>Private</strong><span>Your code stays on your machine</span></div>
+                    <div><strong>Familiar</strong><span>Built on the VS Code foundation</span></div>
                 </div>
             </section>
 
@@ -106,10 +105,10 @@ export default function LandingPage() {
                             an internal endpoint, or run fully local with Ollama.
                         </p>
                         <ul className="check-list">
-                            <li><Check size={16} /> No Elcro account required</li>
-                            <li><Check size={16} /> No upstream Void analytics</li>
+                            <li><Check size={16} /> No mandatory Elcro account</li>
+                            <li><Check size={16} /> Your code is never used for training</li>
                             <li><Check size={16} /> Keys remain on your machine</li>
-                            <li><Check size={16} /> Auditable open-source codebase</li>
+                            <li><Check size={16} /> Private by default</li>
                         </ul>
                     </div>
                 </div>
@@ -126,9 +125,9 @@ export default function LandingPage() {
                             Choose separate models for chat, autocomplete, Quick Edit, and Apply.
                             Switch providers without switching editors.
                         </p>
-                        <a className="text-link" href={githubLink} target="_blank" rel="noreferrer">
+                        <Link className="text-link" href="/product/models">
                             Explore the integrations <ArrowRight size={16} />
-                        </a>
+                        </Link>
                     </div>
                     <div className="model-cloud">
                         {modelLogos.map(model => (
@@ -162,16 +161,16 @@ export default function LandingPage() {
 
             <section className="site-container final-cta">
                 <Image src="/elcro/icon.png" alt="" width={72} height={72} />
-                <div className="eyebrow"><span /> Built in the open</div>
+                <div className="eyebrow"><span /> Ready when you are</div>
                 <h2>Build faster without giving up control.</h2>
-                <p>Elcro is free, open source, and ready for your next project.</p>
+                <p>Start with a free trial and upgrade when you are ready for more.</p>
                 <div className="hero-actions">
                     <Link className="button button-primary" href={downloadLink}>
                         <Download size={19} /> Get Elcro
                     </Link>
-                    <a className="button button-secondary" href={githubLink} target="_blank" rel="noreferrer">
-                        <Github size={19} /> Star on GitHub
-                    </a>
+                    <Link className="button button-secondary" href="/pricing">
+                        See pricing <ArrowRight size={19} />
+                    </Link>
                 </div>
             </section>
         </main>

@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ArrowRight, Check, Github, Map, ShieldCheck, Sparkles } from 'lucide-react'
+import { ArrowRight, Check, Map, ShieldCheck, Sparkles } from 'lucide-react'
 import { pages, SitePage, site, statusLabel } from '@/lib/site'
 
 const statusIcon = {
@@ -22,22 +22,20 @@ export const StatusBadge = ({ status }: Pick<SitePage, 'status'>) => {
 
 export const SiteCta = ({
     title = 'Build with your tools, models, and rules.',
-    description = 'Elcro is open source, local first, and available without an account.',
+    description = 'Elcro puts you in control of your models, keys, and data.',
 }: {
     title?: string
     description?: string
 }) => (
     <section className="site-container page-cta">
         <div>
-            <span className="eyebrow"><Sparkles size={14} /> Open-source AI coding</span>
+            <span className="eyebrow"><Sparkles size={14} /> AI coding, under your control</span>
             <h2>{title}</h2>
             <p>{description}</p>
         </div>
         <div className="page-cta-actions">
             <Link className="button button-primary" href={site.download}>Download Elcro</Link>
-            <a className="button button-secondary" href={site.github} target="_blank" rel="noreferrer">
-                <Github size={17} /> GitHub
-            </a>
+            <Link className="button button-secondary" href="/pricing">See pricing</Link>
         </div>
     </section>
 )

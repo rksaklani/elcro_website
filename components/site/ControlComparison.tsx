@@ -1,8 +1,8 @@
 import { Check, Minus } from 'lucide-react'
 
 const rows = [
-    ['Open-source desktop code', true, 'Public repository'],
-    ['Elcro account required', false, 'No'],
+    ['Your code used for training', false, 'Never'],
+    ['Mandatory Elcro account', false, 'No'],
     ['Model request path', true, 'Direct to your endpoint'],
     ['Local model support', true, 'Ollama and compatible APIs'],
     ['Hosted cloud agents', false, 'Roadmap, not shipped'],

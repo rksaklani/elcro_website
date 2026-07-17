@@ -4,7 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { ArrowUpRight, ChevronDown, Github, Menu, X } from 'lucide-react'
+import { ArrowUpRight, ChevronDown, Menu, X } from 'lucide-react'
 import { navigation, site, SiteLink, statusLabel } from '@/lib/site'
 
 const MenuLink = ({ item, onNavigate }: { item: SiteLink; onNavigate: () => void }) => (
@@ -88,9 +88,6 @@ export const Header = () => {
                 </nav>
 
                 <div className="nav-actions">
-                    <a className="icon-link" href={site.github} target="_blank" rel="noreferrer" aria-label="Elcro on GitHub">
-                        <Github size={19} />
-                    </a>
                     <Link className="button button-small button-primary nav-download" href={site.download}>
                         Download
                     </Link>
@@ -127,7 +124,7 @@ export const Header = () => {
                             ))}
                             <div className="mobile-actions">
                                 <Link className="button button-primary" href={site.download} onClick={closeAll}>Download Elcro</Link>
-                                <a className="button button-secondary" href={site.github} target="_blank" rel="noreferrer">View GitHub</a>
+                                <Link className="button button-secondary" href="/pricing" onClick={closeAll}>See pricing</Link>
                             </div>
                         </div>
                     </div>
