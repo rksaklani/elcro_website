@@ -36,10 +36,8 @@ export const site = {
     version: '0.1.3',
     // Internal distribution host for signed builds (not surfaced as a source link).
     releases: 'https://github.com/rksaklani/elcro/releases',
-    latestRelease: 'https://github.com/rksaklani/elcro/releases/tag/v0.1.3',
+    latestRelease: 'https://github.com/rksaklani/elcro/releases/latest',
 }
-
-const RELEASE_TAG = 'v0.1.3'
 
 export type DownloadTarget = {
     os: string
@@ -53,16 +51,17 @@ export type DownloadTarget = {
     altHref?: string
 }
 
-const asset = (name: string) => `${site.releases}/download/${RELEASE_TAG}/${name}`
+// Always resolves to the newest published release asset — no need to bump a tag on each release.
+const asset = (name: string) => `${site.releases}/latest/download/${name}`
 
 export const downloadTargets: DownloadTarget[] = [
     {
         os: 'Linux',
         match: 'Linux',
-        arch: 'x64',
+        arch: 'Ubuntu / x64',
         format: 'tar.gz archive',
         href: asset('Elcro-Linux-x64.tar.gz'),
-        install: 'Extract the archive, then run ./VSCode-linux-x64/elcro. If Chromium reports a sandbox error, run: sudo chown root:root chrome-sandbox && sudo chmod 4755 chrome-sandbox in that folder.',
+        install: 'Works on Ubuntu and other x64 Linux distros. Extract the archive, then run ./VSCode-linux-x64/elcro. If Chromium reports a sandbox error, run: sudo chown root:root chrome-sandbox && sudo chmod 4755 chrome-sandbox in that folder.',
         available: true,
     },
     {
@@ -80,10 +79,8 @@ export const downloadTargets: DownloadTarget[] = [
         arch: 'Apple silicon',
         format: 'app archive',
         href: asset('Elcro-macOS-arm64.zip'),
-        install: 'Unzip and move Elcro.app to Applications. This beta is unsigned, so on first launch right-click the app and choose Open. Intel Macs: download the x64 build below.',
+        install: 'For Apple silicon (M1 or newer). Unzip and move Elcro.app to Applications. This beta is unsigned, so on first launch right-click the app and choose Open.',
         available: true,
-        altLabel: 'macOS Intel (x64)',
-        altHref: asset('Elcro-macOS-x64.zip'),
     },
 ]
 

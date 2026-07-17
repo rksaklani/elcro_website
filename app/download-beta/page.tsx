@@ -21,11 +21,11 @@ export default function DownloadPage() {
             <div className="site-container">
                 <section className="download-hero">
                     <Image src="/elcro/icon.png" alt="Elcro icon" width={86} height={86} priority />
-                    <div className="eyebrow"><Download size={14} /> Version {site.version}</div>
+                    <div className="eyebrow"><Download size={14} /> Latest release · v{site.version}</div>
                     <h1>Download Elcro.</h1>
                     <p>
-                        Get the Elcro desktop app for your platform, then start your free trial.
-                        No mandatory cloud connection required.
+                        Get the latest Elcro desktop app for Windows, Ubuntu / Linux, or macOS,
+                        then start your free trial. No mandatory cloud connection required.
                     </p>
                 </section>
 
