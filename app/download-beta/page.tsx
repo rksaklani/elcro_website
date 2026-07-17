@@ -1,10 +1,12 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import { Download, Github, PackageOpen, ShieldCheck } from 'lucide-react'
 import { githubLink, linuxDownloadLink, releaseLink } from '@/components/links'
 
 export const metadata: Metadata = {
-    title: 'Download Elcro',
+    title: 'Download',
     description: 'Download the open-source, local-first Elcro AI coding IDE.',
+    alternates: { canonical: '/download-beta' },
 }
 
 export default function DownloadPage() {
@@ -12,7 +14,7 @@ export default function DownloadPage() {
         <main className="download-page">
             <div className="site-container">
                 <section className="download-hero">
-                    <img src="/elcro/icon.png" alt="Elcro icon" />
+                    <Image src="/elcro/icon.png" alt="Elcro icon" width={86} height={86} priority />
                     <div className="eyebrow"><ShieldCheck size={14} /> Open source · Linux x64</div>
                     <h1>Download Elcro.</h1>
                     <p>

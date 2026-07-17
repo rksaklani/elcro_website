@@ -9,12 +9,15 @@ const ogImage = `${baseUrl}/og?title=${encodeURIComponent(shortTitle)}&descripti
 
 // returns params
 export const metadata = {
-  title,
+  title: { absolute: title },
   description,
+  alternates: {
+    canonical: baseUrl,
+  },
   openGraph: {
     title: shortTitle,
     description,
-    type: 'article',
+    type: 'website',
     url: `${baseUrl}`,
     images: [
       {
@@ -47,9 +50,15 @@ export default function Home() {
             name: shortTitle,
             description: description,
             applicationCategory: 'DeveloperApplication',
-            operatingSystem: 'Any',
+            operatingSystem: 'Linux',
+            softwareVersion: '0.1.0',
             url: baseUrl,
             image: ogImage,
+            offers: {
+              '@type': 'Offer',
+              price: '0',
+              priceCurrency: 'USD',
+            },
             author: {
               '@type': 'Organization',
               name: 'Elcro',

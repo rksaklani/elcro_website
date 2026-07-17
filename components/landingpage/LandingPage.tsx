@@ -1,55 +1,23 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import {
     ArrowRight,
-    Bot,
-    Braces,
     Check,
     Code2,
     Cpu,
     Download,
     Github,
     LockKeyhole,
-    Plug,
-    RotateCcw,
     ShieldCheck,
     Sparkles,
     SquareTerminal,
-    Zap,
 } from 'lucide-react'
 import { downloadLink, githubLink } from '../links'
-
-const features = [
-    {
-        icon: Bot,
-        title: 'Agent that closes the loop',
-        description: 'Ask Elcro to inspect files, make edits, run commands, read diagnostics, and iterate on the result.',
-    },
-    {
-        icon: Zap,
-        title: 'Fast inline edits',
-        description: 'Use Quick Edit, streaming diffs, and Fast Apply to change code without losing your flow.',
-    },
-    {
-        icon: Cpu,
-        title: 'Any model, your choice',
-        description: 'Connect directly to Anthropic, OpenAI, Gemini, OpenRouter, Ollama, or an OpenAI-compatible endpoint.',
-    },
-    {
-        icon: Plug,
-        title: 'MCP built in',
-        description: 'Give the agent access to your own tools through local stdio, HTTP, and SSE MCP servers.',
-    },
-    {
-        icon: RotateCcw,
-        title: 'Review every change',
-        description: 'Accept or reject granular diffs and return to checkpoints when an experiment goes the wrong way.',
-    },
-    {
-        icon: Braces,
-        title: 'Your VS Code workflow',
-        description: 'Keep the editor, keybindings, themes, extensions, terminal, and source control you already know.',
-    },
-]
+import { FeatureGrid } from '../site/FeatureGrid'
+import { Faq } from '../site/Faq'
+import { ProductDemo } from '../site/ProductDemo'
+import { RoadmapPreview } from '../site/RoadmapPreview'
+import { ControlComparison } from '../site/ControlComparison'
 
 const modelLogos = [
     { src: '/ollama.png', name: 'Ollama' },
@@ -58,42 +26,6 @@ const modelLogos = [
     { src: '/gemini.png', name: 'Gemini' },
     { src: '/openrouter.png', name: 'OpenRouter' },
 ]
-
-const CodeWindow = () => (
-    <div className="code-window" aria-label="Elcro agent editing a TypeScript project">
-        <div className="window-bar">
-            <div className="window-dots"><span /><span /><span /></div>
-            <span>elcro — local-first agent</span>
-            <span className="window-status"><span /> private</span>
-        </div>
-        <div className="editor-shell">
-            <aside className="file-tree">
-                <div className="tree-label">EXPLORER</div>
-                <p>⌄ src</p>
-                <p className="tree-active">◇ agent.ts</p>
-                <p>◇ models.ts</p>
-                <p>◇ index.ts</p>
-                <p>package.json</p>
-            </aside>
-            <div className="editor-code">
-                <div><span className="line-number">1</span><span className="code-purple">export async function</span> <span className="code-blue">runAgent</span>() {'{'}</div>
-                <div><span className="line-number">2</span>&nbsp;&nbsp;<span className="code-purple">const</span> context = <span className="code-blue">await</span> workspace.<span className="code-blue">inspect</span>()</div>
-                <div className="code-added"><span className="line-number">3</span>&nbsp;&nbsp;<span className="code-purple">const</span> plan = <span className="code-blue">await</span> model.<span className="code-blue">reason</span>(context)</div>
-                <div className="code-added"><span className="line-number">4</span>&nbsp;&nbsp;<span className="code-purple">await</span> tools.<span className="code-blue">apply</span>(plan)</div>
-                <div><span className="line-number">5</span>{'}'}</div>
-                <div className="cursor-line"><span className="line-number">6</span><span className="code-cursor" /></div>
-            </div>
-            <aside className="agent-panel">
-                <div className="agent-heading"><Sparkles size={15} /> Agent</div>
-                <p className="agent-prompt">Make the provider connection private by default.</p>
-                <div className="agent-step"><Check size={13} /> Read provider settings</div>
-                <div className="agent-step"><Check size={13} /> Updated request path</div>
-                <div className="agent-step agent-running"><span /> Running typecheck</div>
-                <div className="agent-result">2 files changed <strong>+18</strong> <em>−7</em></div>
-            </aside>
-        </div>
-    </div>
-)
 
 export default function LandingPage() {
     return (
@@ -124,10 +56,10 @@ export default function LandingPage() {
                     </div>
                     <div className="hero-product">
                         <div className="product-badge">
-                            <img src="/elcro/icon.png" alt="" />
+                            <Image src="/elcro/icon.png" alt="" width={38} height={38} priority />
                             <div><strong>Elcro 0.1</strong><span>Built on Code - OSS</span></div>
                         </div>
-                        <CodeWindow />
+                        <ProductDemo />
                     </div>
                 </div>
             </section>
@@ -148,15 +80,7 @@ export default function LandingPage() {
                         <h2>Everything you need to move from idea to working code.</h2>
                         <p>Elcro combines a familiar editor with practical AI tools that stay under your control.</p>
                     </div>
-                    <div className="feature-grid">
-                        {features.map(({ icon: Icon, title, description }) => (
-                            <article className="feature-card" key={title}>
-                                <div className="feature-icon"><Icon size={21} /></div>
-                                <h3>{title}</h3>
-                                <p>{description}</p>
-                            </article>
-                        ))}
-                    </div>
+                    <FeatureGrid />
                 </div>
             </section>
 
@@ -191,6 +115,8 @@ export default function LandingPage() {
                 </div>
             </section>
 
+            <ControlComparison />
+
             <section id="models" className="section models-section">
                 <div className="site-container models-grid">
                     <div>
@@ -207,7 +133,7 @@ export default function LandingPage() {
                     <div className="model-cloud">
                         {modelLogos.map(model => (
                             <div className="model-chip" key={model.name}>
-                                <img src={model.src} alt="" />
+                                <Image src={model.src} alt="" width={38} height={38} />
                                 <span>{model.name}</span>
                             </div>
                         ))}
@@ -215,6 +141,8 @@ export default function LandingPage() {
                     </div>
                 </div>
             </section>
+
+            <RoadmapPreview />
 
             <section className="section workflow-section">
                 <div className="site-container">
@@ -230,8 +158,10 @@ export default function LandingPage() {
                 </div>
             </section>
 
+            <Faq />
+
             <section className="site-container final-cta">
-                <img src="/elcro/icon.png" alt="" />
+                <Image src="/elcro/icon.png" alt="" width={72} height={72} />
                 <div className="eyebrow"><span /> Built in the open</div>
                 <h2>Build faster without giving up control.</h2>
                 <p>Elcro is free, open source, and ready for your next project.</p>

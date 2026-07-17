@@ -1,5 +1,14 @@
-import { redirect } from 'next/navigation'
+import type { Metadata } from 'next'
+import { MarketingPage } from '@/components/site/MarketingPage'
+import { pageBySlug } from '@/lib/site'
 
-export default function Page() {
-    redirect('https://github.com/rksaklani/elcro/releases')
+const page = pageBySlug.get('changelog')!
+
+export const metadata: Metadata = {
+    title: 'Changelog',
+    description: page.description,
+}
+
+export default function ChangelogPage() {
+    return <MarketingPage page={page} />
 }

@@ -1,18 +1,18 @@
-import Link from "next/link";
+import Link from 'next/link'
+import { ArrowLeft, SearchX } from 'lucide-react'
 
 export default function NotFound() {
-  return (
-    <section className='min-h-screen flex flex-col justify-center items-center'>
-        <img src={process.env.NEXT_PUBLIC_LOGO_URL!} className='w-10 h-11 grayscale' />
-      <h1 className="mb-8 text-2xl font-semibold tracking-tighter ">
-        404 - Page Not Found
-      </h1>
-      <p className="mb-4">
-        {`Apologies - we couldn't find that page. `}
-        Go back to the {' '}<Link href='/' className='underline'>
-          homepage
-        </Link> or get in touch!
-      </p>
-    </section>
-  )
+    return (
+        <main className="not-found">
+            <div className="site-container not-found-inner">
+                <SearchX size={38} />
+                <span>404</span>
+                <h1>This route is not in the workspace.</h1>
+                <p>The page may have moved, or the feature may still be an untracked idea.</p>
+                <Link className="button button-primary" href="/">
+                    <ArrowLeft size={17} /> Back to Elcro
+                </Link>
+            </div>
+        </main>
+    )
 }

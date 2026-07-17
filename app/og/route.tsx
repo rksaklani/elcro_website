@@ -11,7 +11,8 @@ export function GET(request: Request) {
   return new ImageResponse(
     (
       <div tw="flex flex-row w-full h-full items-center justify-start px-[100px] bg-[#07090f] text-white">
-        <img tw='h-[260px] w-[260px] mr-[70px] rounded-[48px]' src={`${baseUrl}/elcro/icon.png`} />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img alt="" tw='h-[260px] w-[260px] mr-[70px] rounded-[48px]' src={`${baseUrl}/elcro/icon.png`} />
 
         <div tw="flex flex-col w-[620px]">
           <h2 tw="text-8xl font-bold tracking-tight text-left">{title}</h2>

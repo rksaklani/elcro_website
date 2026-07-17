@@ -1,5 +1,14 @@
-import { redirect } from 'next/navigation'
+import type { Metadata } from 'next'
+import { MarketingPage } from '@/components/site/MarketingPage'
+import { pageBySlug } from '@/lib/site'
 
-export default function Page() {
-    redirect('/')
+const page = pageBySlug.get('blog')!
+
+export const metadata: Metadata = {
+    title: 'Blog',
+    description: page.description,
+}
+
+export default function BlogPage() {
+    return <MarketingPage page={page} />
 }

@@ -1,20 +1,41 @@
+import type { Metadata, Viewport } from 'next'
 import './globals.css'
 import { Footer } from '@/components/landingpage/Footer'
 import { Header } from '@/components/landingpage/Header'
+import { site } from '@/lib/site'
+
+export const metadata: Metadata = {
+    metadataBase: new URL(process.env.BASE_URL || 'http://localhost:3000'),
+    title: {
+        default: 'Elcro — Open-source, local-first AI coding IDE',
+        template: '%s — Elcro',
+    },
+    description: site.description,
+    applicationName: site.name,
+    keywords: ['AI code editor', 'open source IDE', 'local AI', 'coding agent', 'MCP', 'Ollama'],
+    authors: [{ name: 'Elcro contributors', url: site.github }],
+    creator: 'Elcro contributors',
+    icons: {
+        icon: '/elcro/favicon.png',
+        apple: '/elcro/icon.png',
+    },
+}
+
+export const viewport: Viewport = {
+    width: 'device-width',
+    initialScale: 1,
+    minimumScale: 1,
+    colorScheme: 'dark',
+    themeColor: '#06070b',
+}
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
     return (
         <html lang="en">
-            <head>
-                <meta
-                    name="viewport"
-                    content="minimum-scale=1, initial-scale=1, width=device-width"
-                />
-                <link rel="icon" href="/elcro/favicon.png" />
-            </head>
             <body>
+                <a className="skip-link" href="#page-content">Skip to content</a>
                 <Header />
-                {children}
+                <div id="page-content">{children}</div>
                 <Footer />
             </body>
         </html>

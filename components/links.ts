@@ -1,6 +1,8 @@
-export const githubLink = 'https://github.com/rksaklani/elcro'
+import { site } from '@/lib/site'
+
+export const githubLink = site.github
 export const githubStarLink = githubLink
-export const downloadLink = '/download-beta'
+export const downloadLink = site.download
 export const releaseLink = `${githubLink}/releases`
 export const linuxDownloadLink = releaseLink
 
