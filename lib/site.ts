@@ -82,6 +82,15 @@ export const downloadTargets: DownloadTarget[] = [
         install: 'For Apple silicon (M1 or newer). Unzip and move Elcro.app to Applications. This beta is unsigned, so on first launch right-click the app and choose Open.',
         available: true,
     },
+    {
+        os: 'macOS',
+        match: 'MacIntel',
+        arch: 'Intel',
+        format: 'app archive',
+        href: asset('Elcro-macOS-x64.zip'),
+        install: 'For Intel Macs. Unzip and move Elcro.app to Applications. This beta is unsigned, so on first launch right-click the app and choose Open.',
+        available: true,
+    },
 ]
 
 export const navigation: { label: string; href?: string; items?: SiteLink[] }[] = [
@@ -482,6 +491,7 @@ const resourcePages: SitePage[] = [
         { title: 'Third-party integrations', body: 'Extensions, MCP servers, model providers, Git hosts, and downloaded updates are separate systems. Review each one before use.' },
     ]),
     info('changelog', 'Changelog', 'Releases', 'A short record of what changed.', 'Elcro publishes new desktop builds for each platform. This page adds editorial release notes as the product grows.', ['0.1 initial build', 'Multi-platform', 'Regular updates'], [
+        { title: 'Elcro 0.1.7', body: 'Chat model dropdown now lists every model you enable in Settings. Providers that still need an API key are labeled so you can finish setup. Builds for Windows, macOS, and Linux.' },
         { title: 'Elcro 0.1', body: 'First desktop release for Windows, macOS, and Linux with agentic chat, Quick Edit, autocomplete, direct-provider model access, MCP tools, and checkpoints.' },
         { title: 'Follow along', body: 'Watch this page and in-app update prompts for the latest versions.' },
     ]),

@@ -34,7 +34,7 @@ export default function DownloadPage() {
                     {downloadTargets.map(target => {
                         const Icon = osIcon[target.os] ?? MonitorDown
                         return (
-                            <article className="download-tile" key={target.os}>
+                            <article className="download-tile" key={`${target.os}-${target.arch}`}>
                                 <div className="download-tile-icon"><Icon size={26} /></div>
                                 <h2>Elcro for {target.os}</h2>
                                 <p className="download-tile-meta">v{site.version} · {target.arch} · {target.format}</p>
