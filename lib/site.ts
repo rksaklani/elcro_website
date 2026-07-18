@@ -33,7 +33,7 @@ export const site = {
     name: 'Elcro',
     description: 'The AI code editor that keeps you in control.',
     download: '/download-beta',
-    version: '0.1.7',
+    version: '0.1.8',
     // Internal distribution host for signed builds (not surfaced as a source link).
     releases: 'https://github.com/rksaklani/elcro/releases',
     latestRelease: 'https://github.com/rksaklani/elcro/releases/latest',
@@ -491,7 +491,8 @@ const resourcePages: SitePage[] = [
         { title: 'Third-party integrations', body: 'Extensions, MCP servers, model providers, Git hosts, and downloaded updates are separate systems. Review each one before use.' },
     ]),
     info('changelog', 'Changelog', 'Releases', 'A short record of what changed.', 'Elcro publishes new desktop builds for each platform. This page adds editorial release notes as the product grows.', ['0.1 initial build', 'Multi-platform', 'Regular updates'], [
-        { title: 'Elcro 0.1.7', body: 'Chat model dropdown now lists every model you enable in Settings. Providers that still need an API key are labeled so you can finish setup. Builds for Windows, macOS, and Linux.' },
+        { title: 'Elcro 0.1.8', body: 'Desktop builds for Windows, Ubuntu / Linux, and macOS (Apple silicon and Intel). Chat lists every model you enable in Settings; providers that still need an API key are labeled.' },
+        { title: 'Elcro 0.1.7', body: 'Chat model dropdown now lists every model you enable in Settings. Providers that still need an API key are labeled so you can finish setup.' },
         { title: 'Elcro 0.1', body: 'First desktop release for Windows, macOS, and Linux with agentic chat, Quick Edit, autocomplete, direct-provider model access, MCP tools, and checkpoints.' },
         { title: 'Follow along', body: 'Watch this page and in-app update prompts for the latest versions.' },
     ]),
