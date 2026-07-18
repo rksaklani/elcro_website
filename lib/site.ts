@@ -33,7 +33,7 @@ export const site = {
     name: 'Elcro',
     description: 'The AI code editor that keeps you in control.',
     download: '/download-beta',
-    version: '0.1.5',
+    version: '0.1.6',
     // Internal distribution host for signed builds (not surfaced as a source link).
     releases: 'https://github.com/rksaklani/elcro/releases',
     latestRelease: 'https://github.com/rksaklani/elcro/releases/latest',
