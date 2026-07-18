@@ -24,8 +24,9 @@ export default function DownloadPage() {
                     <div className="eyebrow"><Download size={14} /> Latest release · v{site.version}</div>
                     <h1>Download Elcro.</h1>
                     <p>
-                        Get the latest Elcro desktop app for Windows, Ubuntu / Linux, or macOS,
-                        then start your free trial. No mandatory cloud connection required.
+                        Get the latest Elcro desktop IDE for Windows, Ubuntu / Linux, or macOS.
+                        Every button below always downloads the current stable build (v{site.version}).
+                        Start your free trial after install — no mandatory cloud connection required.
                     </p>
                 </section>
 
@@ -36,7 +37,7 @@ export default function DownloadPage() {
                             <article className="download-tile" key={target.os}>
                                 <div className="download-tile-icon"><Icon size={26} /></div>
                                 <h2>Elcro for {target.os}</h2>
-                                <p className="download-tile-meta">{target.arch} · {target.format}</p>
+                                <p className="download-tile-meta">v{site.version} · {target.arch} · {target.format}</p>
                                 <a className={`button ${target.available ? 'button-primary' : 'button-secondary'}`} href={target.href} target="_blank" rel="noreferrer">
                                     <Download size={17} /> {target.available ? 'Download' : 'Get from releases'}
                                 </a>

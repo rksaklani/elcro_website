@@ -33,7 +33,7 @@ export const site = {
     name: 'Elcro',
     description: 'The AI code editor that keeps you in control.',
     download: '/download-beta',
-    version: '0.1.3',
+    version: '0.1.4',
     // Internal distribution host for signed builds (not surfaced as a source link).
     releases: 'https://github.com/rksaklani/elcro/releases',
     latestRelease: 'https://github.com/rksaklani/elcro/releases/latest',
@@ -81,6 +81,8 @@ export const downloadTargets: DownloadTarget[] = [
         href: asset('Elcro-macOS-arm64.zip'),
         install: 'For Apple silicon (M1 or newer). Unzip and move Elcro.app to Applications. This beta is unsigned, so on first launch right-click the app and choose Open.',
         available: true,
+        altLabel: 'Also available: macOS Intel (x64)',
+        altHref: asset('Elcro-macOS-x64.zip'),
     },
 ]
 
