@@ -34,7 +34,7 @@ export const site = {
     description: 'The AI code editor that keeps you in control.',
     download: '/download-beta',
     // SITE_VERSION_START
-    version: '0.1.10',
+    version: '0.1.11',
     // SITE_VERSION_END
     // Internal distribution host for signed builds (not surfaced as a source link).
     releases: 'https://github.com/rksaklani/elcro/releases',
@@ -63,7 +63,7 @@ export const downloadTargets: DownloadTarget[] = [
         arch: 'Ubuntu / x64',
         format: 'tar.gz archive',
         href: asset('Elcro-Linux-x64.tar.gz'),
-        install: 'Works on Ubuntu and other x64 Linux distros. Extract the archive, then run ./VSCode-linux-x64/elcro. If Chromium reports a sandbox error, run: sudo chown root:root chrome-sandbox && sudo chmod 4755 chrome-sandbox in that folder.',
+        install: 'Works on Ubuntu and other x64 Linux distros. Extract the archive, then run ./VSCode-linux-x64/elcro. If Chromium reports a sandbox error, either run with --no-sandbox, or fix chrome-sandbox: sudo chown root:root chrome-sandbox && sudo chmod 4755 chrome-sandbox.',
         available: true,
     },
     {
@@ -341,11 +341,12 @@ const productPages: SitePage[] = [
         'Models',
         'Bring your own model',
         'Use the model that fits the job.',
-        'Configure separate models for Chat, Autocomplete, Quick Edit, and Apply across hosted providers, local runtimes, and OpenAI-compatible endpoints.',
-        ['Hosted providers', 'Ollama and vLLM', 'Per-feature selection'],
+        'Configure separate models for Chat, Autocomplete, Quick Edit, and Apply across hosted providers, local runtimes, remote self-hosted servers, and OpenAI-compatible endpoints.',
+        ['Hosted providers', 'Local and remote servers', 'Per-feature selection'],
         [
             { title: 'Direct provider access', body: 'Elcro sends requests to the endpoint configured for each provider rather than requiring an Elcro inference proxy.' },
             { title: 'Local is a first-class choice', body: 'Elcro can discover locally running providers and supports Ollama, vLLM, LM Studio, and compatible endpoints.' },
+            { title: 'Remote servers', body: 'Add multiple named remote endpoints for LAN, VPS, or private-cloud inference. Test Connection discovers models; credentials stay encrypted on your machine.' },
             { title: 'Provider costs still apply', body: 'Hosted model usage is billed by the provider you choose, separately from your Elcro plan.' },
         ],
     ),
@@ -506,6 +507,7 @@ const resourcePages: SitePage[] = [
     ]),
     info('changelog', 'Changelog', 'Releases', 'A short record of what changed.', 'Elcro publishes new desktop builds for each platform. This page adds editorial release notes as the product grows.', ['0.1 initial build', 'Multi-platform', 'Regular updates'], [
         // CHANGELOG_ENTRIES_START
+        { title: 'Elcro 0.1.11', body: 'Remote AI model servers: connect multiple named Ollama, vLLM, LM Studio, LiteLLM, or OpenAI-compatible endpoints (LAN, VPS, private cloud) with Test Connection, auth, headers, timeout, and SSL controls. Desktop builds for Windows, Ubuntu / Linux, and macOS (Apple silicon and Intel).' },
         { title: 'Elcro 0.1.10', body: 'Cursor-style chat modes (Ask, Plan, Agent, Debug, Multitask), plan UI, prompt enhance, read-only subagents, and local semantic codebase indexing with Agent search_codebase. Desktop builds for Windows, Ubuntu / Linux, and macOS (Apple silicon and Intel).' },
         { title: 'Elcro 0.1.9', body: 'Desktop builds for Windows, Ubuntu / Linux, and macOS (Apple silicon and Intel). Release pipeline and packaging updates.' },
         { title: 'Elcro 0.1.8', body: 'Desktop builds for Windows, Ubuntu / Linux, and macOS (Apple silicon and Intel). Chat lists every model you enable in Settings; providers that still need an API key are labeled.' },
