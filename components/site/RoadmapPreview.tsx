@@ -1,9 +1,9 @@
 import Link from 'next/link'
-import { ArrowRight, Blocks, Bot, Globe, Search } from 'lucide-react'
+import { ArrowRight, Blocks, Bot, Globe, SearchCheck } from 'lucide-react'
 
 const roadmap = [
-    { icon: Search, title: 'Semantic indexing', text: 'Hybrid local retrieval for large codebases.', href: '/roadmap/indexing' },
     { icon: Globe, title: 'Browser tools', text: 'Runtime evidence for frontend work.', href: '/roadmap/browser' },
+    { icon: SearchCheck, title: 'Review', text: 'Dedicated change review and evidence workflows.', href: '/roadmap/review' },
     { icon: Bot, title: 'Multi-agent', text: 'Parallel agents in isolated Git worktrees.', href: '/roadmap/multi-agent' },
     { icon: Blocks, title: 'Automations', text: 'Explicit scheduled and event-driven workflows.', href: '/roadmap/automations' },
 ]

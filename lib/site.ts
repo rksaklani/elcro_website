@@ -33,7 +33,9 @@ export const site = {
     name: 'Elcro',
     description: 'The AI code editor that keeps you in control.',
     download: '/download-beta',
-    version: '0.1.8',
+    // SITE_VERSION_START
+    version: '0.1.9',
+    // SITE_VERSION_END
     // Internal distribution host for signed builds (not surfaced as a source link).
     releases: 'https://github.com/rksaklani/elcro/releases',
     latestRelease: 'https://github.com/rksaklani/elcro/releases/latest',
@@ -100,6 +102,7 @@ export const navigation: { label: string; href?: string; items?: SiteLink[] }[] 
         items: [
             { label: 'Overview', href: '/product', description: 'The complete local-first workflow' },
             { label: 'Agent', href: '/product/agent', description: 'Inspect, edit, run, and iterate', status: 'available' },
+            { label: 'Indexing', href: '/product/indexing', description: 'Local semantic codebase search', status: 'available' },
             { label: 'Tab', href: '/product/tab', description: 'Experimental FIM inline completions', status: 'experimental' },
             { label: 'Quick Edit', href: '/product/quick-edit', description: 'Targeted edits with streaming diffs', status: 'available' },
             { label: 'Models', href: '/product/models', description: 'Bring your own provider or local model', status: 'available' },
@@ -112,7 +115,6 @@ export const navigation: { label: string; href?: string; items?: SiteLink[] }[] 
         label: 'Roadmap',
         href: '/roadmap',
         items: [
-            { label: 'Semantic Indexing', href: '/roadmap/indexing', description: 'Deeper codebase retrieval', status: 'roadmap' },
             { label: 'Browser', href: '/roadmap/browser', description: 'Inspect and test web apps', status: 'roadmap' },
             { label: 'Review', href: '/roadmap/review', description: 'Dedicated change review workflows', status: 'roadmap' },
             { label: 'Multi-agent', href: '/roadmap/multi-agent', description: 'Parallel isolated worktrees', status: 'roadmap' },
@@ -152,6 +154,7 @@ export const footerGroups: { label: string; links: SiteLink[] }[] = [
         label: 'Product',
         links: [
             { label: 'Agent', href: '/product/agent' },
+            { label: 'Indexing', href: '/product/indexing' },
             { label: 'Tab', href: '/product/tab' },
             { label: 'Quick Edit', href: '/product/quick-edit' },
             { label: 'Models', href: '/product/models' },
@@ -163,7 +166,6 @@ export const footerGroups: { label: string; links: SiteLink[] }[] = [
         label: 'Build next',
         links: [
             { label: 'Roadmap', href: '/roadmap' },
-            { label: 'Indexing', href: '/roadmap/indexing' },
             { label: 'Browser', href: '/roadmap/browser' },
             { label: 'Multi-agent', href: '/roadmap/multi-agent' },
             { label: 'Automations', href: '/roadmap/automations' },
@@ -273,12 +275,12 @@ const productPages: SitePage[] = [
         'Product',
         'The local-first AI editor',
         'One editor from first thought to reviewed change.',
-        'Elcro combines a familiar VS Code-based foundation with agentic chat, inline completions, targeted edits, direct model access, MCP tools, and file checkpoints.',
-        ['Agentic chat', 'FIM autocomplete', 'Direct providers'],
+        'Elcro combines a familiar VS Code-based foundation with agentic chat modes, semantic codebase search, inline completions, targeted edits, direct model access, MCP tools, and file checkpoints.',
+        ['Agentic chat modes', 'Semantic indexing', 'Direct providers'],
         [
-            { title: 'Work at the right level', body: 'Use Tab for small continuations, Quick Edit for a selection, or Agent mode for work that spans files and commands.', items: ['Tab completions', 'Quick Edit and Apply', 'Normal, Gather, and Agent chat modes'] },
+            { title: 'Work at the right level', body: 'Use Tab for small continuations, Quick Edit for a selection, or pick a chat mode for the autonomy you want.', items: ['Tab completions', 'Quick Edit and Apply', 'Ask, Plan, Agent, Debug, and Multitask modes'] },
             { title: 'Keep control of every change', body: 'Edits stream into the editor as diffs. Review changes individually, accept a group, reject an experiment, or restore a checkpoint.' },
-            { title: 'Connect your own stack', body: 'Choose hosted or local models and extend Agent with MCP tools. Elcro does not require an Elcro-hosted inference service.' },
+            { title: 'Connect your own stack', body: 'Choose hosted or local models, index the codebase for semantic search, and extend Agent with MCP tools. Elcro does not require an Elcro-hosted inference service.' },
         ],
     ),
     shipped(
@@ -286,12 +288,25 @@ const productPages: SitePage[] = [
         'Agent',
         'Local agent workflow',
         'Give the task to an agent that can act.',
-        'Elcro Agent can inspect the workspace, search files, edit code, read diagnostics, run temporary commands, and work with persistent terminals under your approval controls.',
-        ['File and search tools', 'Terminal execution', 'Approval controls'],
+        'Elcro Agent can inspect the workspace, search files and the semantic index, edit code, read diagnostics, run temporary commands, and work with persistent terminals under your approval controls.',
+        ['Chat modes', 'File and search tools', 'Approval controls'],
         [
-            { title: 'Three ways to chat', body: 'Normal mode answers directly. Gather mode collects context. Agent mode enters a tool loop that can act on the project.', items: ['Normal chat', 'Gather mode', 'Agent mode'] },
-            { title: 'Tools with visible consequences', body: 'Agent tools cover file reads, text search, directory inspection, create, delete, edit, diagnostics, and terminal execution. Destructive steps remain visible for review.' },
-            { title: 'Designed for local work', body: 'The tool loop runs in the desktop app against your workspace. Model requests follow the provider configuration you choose.' },
+            { title: 'Five chat modes', body: 'Ask answers without edits. Plan drafts a step-by-step approach. Agent runs the full tool loop. Debug focuses on evidence and fixes. Multitask runs read-only subagent tracks in parallel.', items: ['Ask', 'Plan', 'Agent', 'Debug', 'Multitask'] },
+            { title: 'Tools with visible consequences', body: 'Agent tools cover file reads, text and semantic search, directory inspection, create, delete, edit, diagnostics, terminal execution, and read-only subagents. Destructive steps remain visible for review.' },
+            { title: 'Designed for local work', body: 'The tool loop runs in the desktop app against your workspace. Model requests follow the provider configuration you choose. Prompt enhance can refine a draft before you send it.' },
+        ],
+    ),
+    shipped(
+        'product/indexing',
+        'Semantic Indexing',
+        'Local codebase retrieval',
+        'Help Agent find the right code in large repositories.',
+        'Elcro builds an incremental local semantic index so Agent can search by meaning, not only exact text. You choose the embedding provider; indexing stays on your machine unless you opt into a remote embedding endpoint.',
+        ['Local index', 'search_codebase tool', 'Status bar health'],
+        [
+            { title: 'Incremental local index', body: 'Enable indexing in Settings, pick an embedding model, and Elcro keeps the workspace index up to date as files change. Ignore rules and skipped-file reasons stay visible.' },
+            { title: 'Agent retrieval', body: 'Agent can call search_codebase to pull semantically relevant chunks into context before editing or answering.' },
+            { title: 'Current boundary', body: 'Indexing improves retrieval for Agent. Coordinated cross-file Tab predictions and cloud-hosted mandatory indexes are not part of this release.' },
         ],
     ),
     shipped(
@@ -304,7 +319,7 @@ const productPages: SitePage[] = [
         [
             { title: 'Built for coding models', body: 'Select a dedicated autocomplete model instead of spending an expensive chat model on every keystroke.' },
             { title: 'Responsive by design', body: 'Requests debounce while you type, cancel when context changes, and reuse safe cached results where possible.' },
-            { title: 'Current boundary', body: 'Elcro Tab uses editor-local context today. Semantic repository retrieval and coordinated cross-file predictions belong to the roadmap.' },
+            { title: 'Current boundary', body: 'Elcro Tab uses editor-local context today. Agent can use the semantic index separately; coordinated cross-file Tab predictions remain future work.' },
         ],
         'experimental',
     ),
@@ -384,26 +399,23 @@ const roadmapPages: SitePage[] = [
         'The roadmap separates shipped capabilities from experiments and future work. It is directional, not a promise of dates or commercial availability.',
         ['Transparent status', 'Honest labels', 'No invented launch dates'],
         [
-            { title: 'Near-term foundation', body: 'Improve distribution, model compatibility, edit reliability, documentation, and local retrieval before adding expensive infrastructure.' },
-            { title: 'Local power next', body: 'Semantic indexing, browser tooling, review workflows, skills, hooks, and isolated worktrees can make the local product substantially stronger.' },
+            { title: 'Near-term foundation', body: 'Improve distribution, model compatibility, edit reliability, and documentation before adding expensive infrastructure.' },
+            { title: 'Local power next', body: 'Browser tooling, dedicated review workflows, skills, hooks, and isolated worktrees can make the local product substantially stronger. Semantic indexing and chat modes with Multitask subagents already ship.' },
             { title: 'Cloud only when justified', body: 'Remote agents, mobile control, and automations require durable backend systems. They remain roadmap work until Elcro has the security and operational foundation to support them.' },
         ],
     ),
-    planned('roadmap/indexing', 'Semantic Indexing', 'Help Agent understand large repositories.', 'Elcro has lexical file and text search today. This roadmap item adds an incremental semantic index and retrieval layer without making cloud hosting mandatory.', [
-        { title: 'Planned scope', body: 'Incremental local indexing, symbols, embeddings, ignore controls, index health, and hybrid lexical-semantic retrieval.' },
-        { title: 'Privacy target', body: 'Prefer a local index and user-selected embedding provider. Make remote processing explicit rather than automatic.' },
-    ]),
     planned('roadmap/browser', 'Browser', 'Let Agent inspect the application it changes.', 'A future browser tool would close the loop for frontend work through navigation, screenshots, console output, network inspection, and structured page context.', [
         { title: 'Planned scope', body: 'Workspace-isolated browser state, screenshots, accessibility snapshots, console and network evidence, plus deliberate interaction tools.' },
         { title: 'Safety first', body: 'Origin controls, visible sessions, confirmation for sensitive actions, and no hidden account automation.' },
     ]),
-    planned('roadmap/review', 'Review', 'A workflow dedicated to finding problems.', 'The current generic agent can inspect diffs and diagnostics. Dedicated review and debug modes need stronger evidence collection, severity handling, and focused user interfaces.', [
+    planned('roadmap/review', 'Review', 'A workflow dedicated to finding problems.', 'Debug mode already focuses Agent on investigation. Dedicated review workflows still need stronger evidence collection, severity handling, and focused user interfaces beyond the generic chat surface.', [
         { title: 'Local review', body: 'Review working-tree changes, explain risks, point to exact lines, and avoid low-confidence noise.' },
         { title: 'Debug evidence', body: 'Instrument an app, reproduce behavior, gather runtime evidence, explain the cause, and remove temporary instrumentation.' },
     ]),
-    planned('roadmap/multi-agent', 'Multi-agent', 'Parallel work without file conflicts.', 'Elcro does not currently orchestrate subagents. The target is isolated local agents that use Git worktrees and return reviewable results.', [
-        { title: 'Isolation model', body: 'One branch and worktree per agent, explicit merge or cherry-pick, and clear cleanup.' },
-        { title: 'Resource limits', body: 'Bound concurrency, terminal usage, model spend, and filesystem scope so parallel work remains understandable.' },
+    planned('roadmap/multi-agent', 'Multi-agent', 'Parallel work without file conflicts.', 'Multitask mode already runs read-only subagents in parallel tracks inside one workspace. The remaining roadmap target is isolated local agents that use Git worktrees and return reviewable branches.', [
+        { title: 'Shipped today', body: 'Multitask mode, prompt enhance, and run_subagent for parallel read-only investigation with custom .elcro/subagents definitions.' },
+        { title: 'Isolation model next', body: 'One branch and worktree per agent, explicit merge or cherry-pick, and clear cleanup.' },
+        { title: 'Resource limits', body: 'Bound concurrency, terminal usage, model spend, and filesystem scope so parallel write work remains understandable.' },
     ]),
     planned('roadmap/cloud', 'Cloud Agents', 'Optional remote execution, not a mandatory dependency.', 'Cloud agents require secure repositories, secrets, isolated compute, logs, artifact handling, billing, and abuse controls. None of that is shipped today.', [
         { title: 'Long-term direction', body: 'Opt-in hosted runners or self-hosted workers that can build, test, and return a branch for review.' },
@@ -450,10 +462,12 @@ const docsPages: SitePage[] = [
         { title: 'Install a model', body: 'Install Ollama and pull a model suited to your hardware.', code: 'ollama pull qwen2.5-coder:7b' },
         { title: 'Connect Elcro', body: 'Start Ollama, enable the Ollama provider in Elcro Settings, refresh models, and assign one to a feature.' },
     ]),
-    info('docs/agent', 'Agent', 'Documentation', 'Use Normal, Gather, and Agent modes.', 'Choose how much autonomy Elcro should use for each task.', ['Normal', 'Gather', 'Agent'], [
-        { title: 'Normal mode', body: 'Ask questions and receive a response without entering the autonomous tool loop.' },
-        { title: 'Gather mode', body: 'Let Elcro collect workspace context before answering.' },
+    info('docs/agent', 'Agent', 'Documentation', 'Use Ask, Plan, Agent, Debug, and Multitask modes.', 'Choose how much autonomy Elcro should use for each task.', ['Ask', 'Plan', 'Agent', 'Debug', 'Multitask'], [
+        { title: 'Ask mode', body: 'Ask questions and receive a response with read-only tools. Elcro does not edit files in Ask mode.' },
+        { title: 'Plan mode', body: 'Draft a step-by-step approach before making changes. Use Plan when you want a reviewed strategy first.' },
         { title: 'Agent mode', body: 'Allow file, diagnostic, edit, and terminal tools. Review approvals and diffs as work progresses.' },
+        { title: 'Debug mode', body: 'Focus the agent on reproducing issues, gathering evidence, and proposing fixes with visible tool use.' },
+        { title: 'Multitask mode', body: 'Run parallel read-only subagent tracks for investigation. Custom subagents live under .elcro/subagents/. Worktree-isolated write agents remain on the roadmap.' },
     ]),
     info('docs/mcp', 'MCP', 'Documentation', 'Connect tool servers to Agent.', 'Elcro supports MCP tool discovery and calls over stdio, Streamable HTTP, and SSE.', ['Configuration file', 'Server toggles', 'Tool calls'], [
         { title: 'Add a server', body: 'Open the MCP configuration from Elcro Settings and define a local command or remote endpoint. Restart or refresh the server after editing.' },
@@ -491,15 +505,18 @@ const resourcePages: SitePage[] = [
         { title: 'Third-party integrations', body: 'Extensions, MCP servers, model providers, Git hosts, and downloaded updates are separate systems. Review each one before use.' },
     ]),
     info('changelog', 'Changelog', 'Releases', 'A short record of what changed.', 'Elcro publishes new desktop builds for each platform. This page adds editorial release notes as the product grows.', ['0.1 initial build', 'Multi-platform', 'Regular updates'], [
+        // CHANGELOG_ENTRIES_START
+        { title: 'Elcro 0.1.9', body: 'Cursor-style chat modes (Ask, Plan, Agent, Debug, Multitask), plan UI, prompt enhance, read-only subagents, and local semantic codebase indexing with Agent search_codebase. Desktop builds for Windows, Ubuntu / Linux, and macOS (Apple silicon and Intel).' },
         { title: 'Elcro 0.1.8', body: 'Desktop builds for Windows, Ubuntu / Linux, and macOS (Apple silicon and Intel). Chat lists every model you enable in Settings; providers that still need an API key are labeled.' },
         { title: 'Elcro 0.1.7', body: 'Chat model dropdown now lists every model you enable in Settings. Providers that still need an API key are labeled so you can finish setup.' },
         { title: 'Elcro 0.1', body: 'First desktop release for Windows, macOS, and Linux with agentic chat, Quick Edit, autocomplete, direct-provider model access, MCP tools, and checkpoints.' },
         { title: 'Follow along', body: 'Watch this page and in-app update prompts for the latest versions.' },
+        // CHANGELOG_ENTRIES_END
     ]),
     info('blog', 'Blog', 'Notes from the team', 'Technical writing without invented momentum.', 'The Elcro blog covers the decisions behind a private, control-first AI editor.', ['Product notes', 'Architecture', 'Workflows'], [
         { title: 'Why Elcro is private by design', body: 'A coding agent is powerful enough to deserve explicit endpoints, visible tools, and reviewable changes, without sending your code to a vendor.' },
         { title: 'Control as a feature', body: 'Direct model access, bring-your-own-key, and local models keep you in charge of cost, latency, and data.' },
-        { title: 'What comes next', body: 'Distribution quality, model support, reliable edits, semantic retrieval, browser evidence, and worktree isolation matter more than a long list of unchecked boxes.' },
+        { title: 'What comes next', body: 'Distribution quality, model support, reliable edits, browser evidence, and worktree isolation matter more than a long list of unchecked boxes.' },
     ]),
     info('community', 'Community', 'Connect with users', 'A place for Elcro users to share and learn.', 'Join other Elcro users to share workflows, prompts, provider setups, and tips. Feature requests and bug reports are welcome through our support channels.', ['Share workflows', 'Ask questions', 'Request features'], [
         { title: 'Share what works', body: 'Post reliable Agent prompts, provider configurations, and MCP setups that make you faster.' },
@@ -514,7 +531,7 @@ const resourcePages: SitePage[] = [
         { title: 'Usage', body: 'Keep sufficient contrast and clear space. Do not distort, recolor individual mark elements, or combine the Elcro name with third-party product names.' },
     ]),
     info('careers', 'Careers', 'Growing the team', 'Help build the AI editor developers control.', 'Elcro is early and growing. If you care about developer tools, performance, and privacy, we would like to hear from you.', ['Product', 'Engineering', 'Design'], [
-        { title: 'Where help matters', body: 'Reliability, packaging, model adapters, semantic retrieval, browser tooling, accessibility, and security.' },
+        { title: 'Where help matters', body: 'Reliability, packaging, model adapters, browser tooling, accessibility, and security.' },
         { title: 'Get in touch', body: 'Reach out through our contact channel with your background and what you would like to work on.' },
     ]),
     info('about', 'About', 'A product with a direction', 'A private, control-first AI coding environment.', 'Elcro is an AI code editor focused on direct model providers, local models, privacy, and keeping developers in control of their data.', ['Private by design', 'Direct providers', 'Independent product'], [
