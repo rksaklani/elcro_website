@@ -34,7 +34,7 @@ export const site = {
     description: 'The AI code editor that keeps you in control.',
     download: '/download-beta',
     // SITE_VERSION_START
-    version: '0.1.12',
+    version: '0.1.11',
     // SITE_VERSION_END
     // Internal distribution host for signed builds (not surfaced as a source link).
     releases: 'https://github.com/rksaklani/elcro/releases',
