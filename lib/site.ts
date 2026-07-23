@@ -70,9 +70,11 @@ export const downloadTargets: DownloadTarget[] = [
         os: 'Windows',
         match: 'Win',
         arch: 'x64',
-        format: 'portable zip',
-        href: asset('Elcro-Windows-x64.zip'),
-        install: 'Extract the zip and run Elcro.exe. Windows may show a SmartScreen prompt for this unsigned beta — choose "More info" then "Run anyway".',
+        format: 'Setup wizard (.exe)',
+        href: asset('ElcroUserSetup-x64.exe'),
+        altLabel: 'Portable zip instead',
+        altHref: asset('Elcro-Windows-x64.zip'),
+        install: 'Run ElcroUserSetup-x64.exe and follow the install wizard (Start Menu + desktop shortcuts). If SmartScreen warns about an unrecognized app, choose More info → Run anyway until the release is Authenticode-signed.',
         available: true,
     },
     {
@@ -451,7 +453,7 @@ const docsPages: SitePage[] = [
         { title: '3. Try the workflow', body: 'Open a project, ask Agent to explain one area, use Quick Edit on a selection, and review the resulting diff.' },
     ]),
     info('docs/install', 'Install', 'Documentation', 'Install Elcro on your platform.', 'Elcro ships desktop apps for Windows, macOS, and Linux. Download the build for your platform from the download page.', ['Windows', 'macOS', 'Linux'], [
-        { title: 'Windows and macOS', body: 'Download the installer or app archive, then launch Elcro. On first launch, start your free trial.' },
+        { title: 'Windows and macOS', body: 'On Windows, download ElcroUserSetup-x64.exe and follow the install wizard. On macOS, unzip the app archive and move Elcro.app to Applications. On first launch, complete onboarding.' },
         { title: 'Linux', body: 'Download and extract the archive, then launch the executable.', code: 'tar -xzf Elcro-Linux-x64.tar.gz\ncd VSCode-linux-x64\n./elcro' },
     ]),
     info('docs/models', 'Models', 'Documentation', 'Configure providers and feature models.', 'Elcro lets each AI feature use a separate provider and model.', ['Chat', 'Autocomplete', 'Quick Edit and Apply'], [
