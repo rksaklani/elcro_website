@@ -56,52 +56,50 @@ export type DownloadTarget = {
 // Always resolves to the newest published release asset — no need to bump a tag on each release.
 const asset = (name: string) => `${site.releases}/latest/download/${name}`
 
-// Primary links must match assets on GitHub "latest". Installer formats
-// (Setup.exe / .deb / .dmg) land with v0.1.13+; until that release is published,
-// portable archives are the working downloads.
+// Primary downloads are installers (Setup.exe / .deb / .dmg). Portable archives remain as alternates.
 export const downloadTargets: DownloadTarget[] = [
     {
         os: 'Linux',
         match: 'Linux',
         arch: 'Ubuntu / x64',
-        format: 'Portable archive (.tar.gz)',
-        href: asset('Elcro-Linux-x64.tar.gz'),
-        altLabel: 'All release assets',
-        altHref: site.latestRelease,
-        install: 'Extract the archive and run ./elcro (or the Elcro binary inside). A .deb installer ships in newer releases when available.',
+        format: 'Debian package (.deb)',
+        href: asset('Elcro-Linux-x64.deb'),
+        altLabel: 'Portable tar.gz instead',
+        altHref: asset('Elcro-Linux-x64.tar.gz'),
+        install: 'Install with: sudo apt install ./Elcro-Linux-x64.deb  (or open the .deb in your software center). Creates an Applications menu entry with the Elcro icon.',
         available: true,
     },
     {
         os: 'Windows',
         match: 'Win',
         arch: 'x64',
-        format: 'Portable zip (.zip)',
-        href: asset('Elcro-Windows-x64.zip'),
-        altLabel: 'All release assets',
-        altHref: site.latestRelease,
-        install: 'Unzip and run Elcro.exe. A Setup wizard (ElcroUserSetup-x64.exe) ships in newer releases when available. If SmartScreen warns, choose More info → Run anyway.',
+        format: 'Setup wizard (.exe)',
+        href: asset('ElcroUserSetup-x64.exe'),
+        altLabel: 'Portable zip instead',
+        altHref: asset('Elcro-Windows-x64.zip'),
+        install: 'Run ElcroUserSetup-x64.exe and follow the install wizard. Installs to AppData\\Local\\Programs\\Elcro, creates Start Menu + Desktop shortcuts, and launches Elcro when finished. If SmartScreen warns, choose More info → Run anyway until the release is Authenticode-signed.',
         available: true,
     },
     {
         os: 'macOS',
         match: 'Mac',
         arch: 'Apple silicon',
-        format: 'Portable zip (.zip)',
-        href: asset('Elcro-macOS-arm64.zip'),
-        altLabel: 'All release assets',
-        altHref: site.latestRelease,
-        install: 'Unzip and open Elcro.app. This beta may be unsigned — on first open, right-click the app and choose Open. A .dmg ships in newer releases when available.',
+        format: 'Disk image (.dmg)',
+        href: asset('Elcro-macOS-arm64.dmg'),
+        altLabel: 'Portable zip instead',
+        altHref: asset('Elcro-macOS-arm64.zip'),
+        install: 'Open the DMG, drag Elcro.app into Applications, then launch from Launchpad. This beta may be unsigned — on first open, right-click the app and choose Open.',
         available: true,
     },
     {
         os: 'macOS',
         match: 'MacIntel',
         arch: 'Intel',
-        format: 'Portable zip (.zip)',
-        href: asset('Elcro-macOS-x64.zip'),
-        altLabel: 'All release assets',
-        altHref: site.latestRelease,
-        install: 'Unzip and open Elcro.app. This beta may be unsigned — on first open, right-click the app and choose Open. A .dmg ships in newer releases when available.',
+        format: 'Disk image (.dmg)',
+        href: asset('Elcro-macOS-x64.dmg'),
+        altLabel: 'Portable zip instead',
+        altHref: asset('Elcro-macOS-x64.zip'),
+        install: 'Open the DMG, drag Elcro.app into Applications, then launch from Launchpad. This beta may be unsigned — on first open, right-click the app and choose Open.',
         available: true,
     },
 ]
@@ -462,8 +460,9 @@ const docsPages: SitePage[] = [
         { title: '3. Try the workflow', body: 'Open a project, ask Agent to explain one area, use Quick Edit on a selection, and review the resulting diff.' },
     ]),
     info('docs/install', 'Install', 'Documentation', 'Install Elcro on your platform.', 'Elcro ships desktop apps for Windows, macOS, and Linux. Download the build for your platform from the download page.', ['Windows', 'macOS', 'Linux'], [
-        { title: 'Windows and macOS', body: 'On Windows, download Elcro-Windows-x64.zip, unzip, and run Elcro.exe. On macOS, unzip the platform zip and open Elcro.app (right-click → Open if Gatekeeper blocks). On Linux, extract the tar.gz and run the binary. On first launch, complete onboarding.' },
-        { title: 'Linux', body: 'Download and extract the archive, then launch the executable.', code: 'tar -xzf Elcro-Linux-x64.tar.gz\ncd VSCode-linux-x64\n./elcro' },
+        { title: 'Windows', body: 'Download ElcroUserSetup-x64.exe, run the install wizard, and finish. Elcro installs under AppData\\Local\\Programs\\Elcro with Start Menu and Desktop shortcuts, then launches automatically.' },
+        { title: 'macOS', body: 'Download the .dmg for Apple silicon or Intel, open it, and drag Elcro.app into Applications. On first open, right-click the app and choose Open if Gatekeeper blocks it.' },
+        { title: 'Linux', body: 'Download Elcro-Linux-x64.deb and install it:', code: 'sudo apt install ./Elcro-Linux-x64.deb' },
     ]),
     info('docs/models', 'Models', 'Documentation', 'Configure providers and feature models.', 'Elcro lets each AI feature use a separate provider and model.', ['Chat', 'Autocomplete', 'Quick Edit and Apply'], [
         { title: 'Provider settings', body: 'Enable a provider, add the required API key or endpoint, refresh available models when supported, and verify the selected model.' },
@@ -518,7 +517,7 @@ const resourcePages: SitePage[] = [
     ]),
     info('changelog', 'Changelog', 'Releases', 'A short record of what changed.', 'Elcro publishes new desktop builds for each platform. This page adds editorial release notes as the product grows.', ['0.1 initial build', 'Multi-platform', 'Regular updates'], [
         // CHANGELOG_ENTRIES_START
-        { title: 'Elcro 0.1.15', body: '**Full Changelog**: https://github.com/rksaklani/elcro/compare/v0.1.14...v0.1.15.' },
+        { title: 'Elcro 0.1.15', body: 'Installer-first distribution like Cursor: Windows ElcroUserSetup-x64.exe wizard, Linux Elcro-Linux-x64.deb, and macOS .dmg disk images. Portable zip/tar.gz remain available as alternates.' },
         { title: 'Elcro 0.1.13', body: 'Windows Inno Setup wizard (ElcroUserSetup-x64.exe) with Elcro branding and desktop shortcuts. Linux Debian installer (Elcro-Linux-x64.deb) with Applications menu icon. macOS disk images (Elcro-macOS-arm64.dmg / Elcro-macOS-x64.dmg) — drag to Applications. Agent Browser session UX, evidence tools, and Tab autocomplete on by default.' },
         { title: 'Elcro 0.1.12', body: 'Unified Elcro desktop app icon across Linux, Windows, and macOS builds (and AppImage/server favicons). Desktop builds for Windows, Ubuntu / Linux, and macOS (Apple silicon and Intel).' },
         { title: 'Elcro 0.1.11', body: 'Remote AI model servers: connect multiple named Ollama, vLLM, LM Studio, LiteLLM, or OpenAI-compatible endpoints (LAN, VPS, private cloud) with Test Connection, auth, headers, timeout, and SSL controls. Desktop builds for Windows, Ubuntu / Linux, and macOS (Apple silicon and Intel).' },
