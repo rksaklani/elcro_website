@@ -34,7 +34,7 @@ export const site = {
     description: 'The AI code editor that keeps you in control.',
     download: '/download-beta',
     // SITE_VERSION_START
-    version: '0.1.13',
+    version: '0.1.15',
     // SITE_VERSION_END
     // Internal distribution host for signed builds (not surfaced as a source link).
     releases: 'https://github.com/rksaklani/elcro/releases',
@@ -518,6 +518,7 @@ const resourcePages: SitePage[] = [
     ]),
     info('changelog', 'Changelog', 'Releases', 'A short record of what changed.', 'Elcro publishes new desktop builds for each platform. This page adds editorial release notes as the product grows.', ['0.1 initial build', 'Multi-platform', 'Regular updates'], [
         // CHANGELOG_ENTRIES_START
+        { title: 'Elcro 0.1.15', body: '**Full Changelog**: https://github.com/rksaklani/elcro/compare/v0.1.14...v0.1.15.' },
         { title: 'Elcro 0.1.13', body: 'Windows Inno Setup wizard (ElcroUserSetup-x64.exe) with Elcro branding and desktop shortcuts. Linux Debian installer (Elcro-Linux-x64.deb) with Applications menu icon. macOS disk images (Elcro-macOS-arm64.dmg / Elcro-macOS-x64.dmg) — drag to Applications. Agent Browser session UX, evidence tools, and Tab autocomplete on by default.' },
         { title: 'Elcro 0.1.12', body: 'Unified Elcro desktop app icon across Linux, Windows, and macOS builds (and AppImage/server favicons). Desktop builds for Windows, Ubuntu / Linux, and macOS (Apple silicon and Intel).' },
         { title: 'Elcro 0.1.11', body: 'Remote AI model servers: connect multiple named Ollama, vLLM, LM Studio, LiteLLM, or OpenAI-compatible endpoints (LAN, VPS, private cloud) with Test Connection, auth, headers, timeout, and SSL controls. Desktop builds for Windows, Ubuntu / Linux, and macOS (Apple silicon and Intel).' },

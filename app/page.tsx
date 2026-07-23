@@ -51,7 +51,7 @@ export default function Home() {
             description: description,
             applicationCategory: 'DeveloperApplication',
             operatingSystem: 'Windows, macOS, Linux',
-            softwareVersion: '0.1.13',
+            softwareVersion: '0.1.15',
             url: baseUrl,
             image: ogImage,
             author: {
