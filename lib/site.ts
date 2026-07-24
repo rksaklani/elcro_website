@@ -34,7 +34,7 @@ export const site = {
     description: 'The AI code editor that keeps you in control.',
     download: '/download-beta',
     // SITE_VERSION_START
-    version: '0.1.16',
+    version: '0.1.17',
     // SITE_VERSION_END
     // Internal distribution host for signed builds (not surfaced as a source link).
     releases: 'https://github.com/rksaklani/elcro/releases',
@@ -517,6 +517,7 @@ const resourcePages: SitePage[] = [
     ]),
     info('changelog', 'Changelog', 'Releases', 'A short record of what changed.', 'Elcro publishes new desktop builds for each platform. This page adds editorial release notes as the product grows.', ['0.1 initial build', 'Multi-platform', 'Regular updates'], [
         // CHANGELOG_ENTRIES_START
+        { title: 'Elcro 0.1.17', body: 'Agent mode now uses native OpenAI-style tool calling for Ollama and remote OpenAI-compatible servers, so models can run terminal commands and edit files instead of only describing steps. Desktop installers for Windows, Linux, and macOS.' },
         { title: 'Elcro 0.1.16', body: 'In-app update checks against GitHub Releases so installed users get notified of new builds. Fix chat model dropdown crash when using remote Ollama servers. Desktop installers for Windows, Linux, and macOS.' },
         { title: 'Elcro 0.1.15', body: 'Installer-first distribution like Cursor: Windows ElcroUserSetup-x64.exe wizard, Linux Elcro-Linux-x64.deb, and macOS .dmg disk images. Portable zip/tar.gz remain available as alternates.' },
         { title: 'Elcro 0.1.13', body: 'Windows Inno Setup wizard (ElcroUserSetup-x64.exe) with Elcro branding and desktop shortcuts. Linux Debian installer (Elcro-Linux-x64.deb) with Applications menu icon. macOS disk images (Elcro-macOS-arm64.dmg / Elcro-macOS-x64.dmg) — drag to Applications. Agent Browser session UX, evidence tools, and Tab autocomplete on by default.' },
